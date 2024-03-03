@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-
+const { config } = require("./config/index");
 dotenv.config({ path: "./config.env" });
 const app = require("./app");
 
@@ -16,6 +16,13 @@ const app = require("./app");
 //   .catch((err) => {
 //     console.error("Error connecting to MongoDB:", err.message);
 //   });
+
+mongoose
+  .connect(config.MONGO_URL)
+  .then(() => {})
+  .then(() => {
+    console.log("connected to db");
+  });
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
