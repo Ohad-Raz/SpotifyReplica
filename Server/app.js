@@ -14,7 +14,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/api/v1/users");
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+// app.use("/api/v1/users");
 // app.use('/api/v1/')
 
 module.exports = app;
