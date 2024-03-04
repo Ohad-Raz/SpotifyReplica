@@ -2,17 +2,19 @@ const mongoose = require("mongoose");
 
 // Define schema for Song
 const songSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  artist_id: { type: mongoose.Schema.Types.ObjectId, required: true },
-  album_id: { type: mongoose.Schema.Types.ObjectId },
-  genre: { type: String, required: true },
-  release_date: { type: Date, required: true },
-  duration: { type: Number, required: true },
+  user: { type: mongoose.Schema.Types.ObjectId, required: false, ref: 'User' },
+  album: { type: mongoose.Schema.Types.ObjectId, ref: 'Album' },
+  title: { type: String, required: false },
+  imageUrl: { type: String , required: false}, 
+  publicId: { type: String , required: false},
+  genre: [{ type: String, required: false, ref: 'Genre' }, ],
+  likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Like' }], 
+  release_date: { type: Date, required: false },
+  duration: { type: Number, required: false },
+  plays: { type: Number, default: 0 },
   lyrics: { type: String },
-  rating: { type: Number },
-  created_at: { type: Date, default: Date.now },
-  updated_at: { type: Date, default: Date.now },
-});
+  rating: { type: Number }
+}, { timestamps: true });
 
 // Create models based on the schemas
 const Song = mongoose.model("Song", songSchema);

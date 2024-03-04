@@ -1,18 +1,21 @@
-const Song = require("../routes/song.routes");
+const { Song } = require("../models/song.model"); 
+
 
 
 exports.createSong = async (req, res) => {
   try {
-    const { title, artist_id, album_id, genre, release_date, duration, lyrics, rating } = req.body;
+    const { title, user, album, genre, release_date, duration, lyrics, rating, imageUrl, publicId } = req.body;
     const song = new Song({
       title,
-      artist_id,
-      album_id,
+      user, 
+      album, 
       genre,
       release_date,
       duration,
       lyrics,
-      rating
+      rating,
+      imageUrl,
+      publicId
     });
     await song.save();
     res.status(201).json(song);
@@ -23,8 +26,8 @@ exports.createSong = async (req, res) => {
 
 
 exports.getAllSongs = async (req, res) => {
-  const songs = await Song.find({});
   try {
+    const songs = await Song.find({}).populate('user album genre');
     res.status(200).json({
       status: "success",
       data: {
@@ -38,7 +41,7 @@ exports.getAllSongs = async (req, res) => {
 
 exports.getSongById = async (req, res) => {
   try {
-    const song = await Song.findById(req.params.id);
+    const song = await Song.findById(req.params.id).populate('user album genre');
     if (!song) {
       return res.status(404).json({ message: 'Song not found' });
     }
@@ -50,19 +53,21 @@ exports.getSongById = async (req, res) => {
 
 exports.updateSong = async (req, res) => {
   try {
-    const { title, artist_id, album_id, genre, release_date, duration, lyrics, rating } = req.body;
+    const { title, user, album, genre, release_date, duration, lyrics, rating, imageUrl, publicId } = req.body;
     const song = await Song.findById(req.params.id);
     if (!song) {
       return res.status(404).json({ message: 'Song not found' });
     }
     song.title = title;
-    song.artist_id = artist_id;
-    song.album_id = album_id;
+    song.user = user; 
+    song.album = album; 
     song.genre = genre;
     song.release_date = release_date;
     song.duration = duration;
     song.lyrics = lyrics;
     song.rating = rating;
+    song.imageUrl = imageUrl;
+    song.publicId = publicId;
     song.updated_at = Date.now();
     await song.save();
     res.json(song);

@@ -6,10 +6,7 @@ const artistSchema = new mongoose.Schema({
     required: true
   },
   biography: String,
-  followers: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
-  }],
+
   albums: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "Album"
@@ -18,11 +15,9 @@ const artistSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Song"
   }],
-  createdAt: {
-    type: Date,
-    default: Date.now
-  }
-});
+
+ },
+  { timestamps: true });
 
 const Artist = mongoose.model("Artist", artistSchema);
 

@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
   publicId: { type: "String" },
   subscriptionType: { type: "String" },
   role: { type: "String", default: "user" },
-  following: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+  // following: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
   likedTracks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Track" }],
   likedAlbums: [{ type: mongoose.Schema.Types.ObjectId, ref: "Album" }],
   playlists: [{ type: mongoose.Schema.Types.ObjectId, ref: "Playlist" }],
