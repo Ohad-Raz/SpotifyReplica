@@ -1,0 +1,40 @@
+.musicPlayer {
+  display: flex;
+  flex-direction: rows;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  background-color: black;
+}
+
+.audioSetting {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.musicPlay {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.currentSong {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.songInfo > * {
+  text-align: right;
+}
+
+.albumCover {
+  width: 7vw;
+}
