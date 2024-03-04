@@ -8,12 +8,12 @@ const albumSchema = new mongoose.Schema(
     rating: { type: Number },
     duration: { type: Number },
     artist_id: {
-      type: mongoose.Schema.Types.objectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Artist",
       required: true,
     },
     songs: [
-      { type: mongoose.Schema.Types.objectId, ref: "Song", required: true },
+      { type: mongoose.Schema.Types.ObjectId, ref: "Song", required: true },
     ],
   },
   { timestamps: true }
