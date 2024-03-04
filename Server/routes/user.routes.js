@@ -1,7 +1,15 @@
 const { User } = require("../models/user.model");
 const express = require("express");
 const router = express.Router();
-
+const {
+  register,
+  login,
+  getUsers,
+  getUserById,
+  editUser,
+  deleteUser,
+  uploadPicture,
+} = require("../controllers/user.Controller");
 const { auth } = require("../middlewares/auth");
 const upload = require("../middlewares/upload");
 
