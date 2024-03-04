@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
   subscriptionType: { type: "String" },
   role: { type: "String", default: "user" },
   following: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
-  likedSong: [{ type: mongoose.Schema.Types.ObjectId, ref: "Song" }],
+  likedTracks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Track" }],
   likedAlbums: [{ type: mongoose.Schema.Types.ObjectId, ref: "Album" }],
   playlists: [{ type: mongoose.Schema.Types.ObjectId, ref: "Playlist" }],
   artist: { type: mongoose.Schema.Types.ObjectId, ref: "Artist" },
