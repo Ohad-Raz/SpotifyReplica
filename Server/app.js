@@ -5,9 +5,7 @@ const playlistRoute = require("./routes/playlist.routes");
 
 const songRoute = require("./routes/song.routes");
 
-
 const albumRoute = require("./routes/album.routes");
-
 
 const app = express();
 app.use(cors());
@@ -28,13 +26,8 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/users", userRoute);
 app.use("/api/v1/playlists", playlistRoute);
-
 app.use("/api/v1/song", songRoute);
-
-
-// app.use('/api/v1/')
-
 app.use("/api/v1/albums", albumRoute);
-
+app.use("/api/v1/albums", albumRoute);
 
 module.exports = app;
