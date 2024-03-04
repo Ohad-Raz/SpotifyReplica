@@ -46,6 +46,8 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1.5;
+  background-color: black;
+  margin: 10px;
 }
 
 /* Optional: Additional resets for form elements */
@@ -83,6 +85,21 @@ img {
 #root {
   min-height: 100vh;
   min-width: 100vw;
-  background-color: #191414;
+  /* background-color: #191414; */
+  background-color: black;
   color: aliceblue;
+  display: grid;
+  grid-template-areas:
+    "main main main main nav"
+    "main main main main nav"
+    "main main main main nav"
+    "main main main main nav"
+    "player player player player player";
+  gap: 0.5rem;
+  margin: 2px;
 }
+
+/* .aside {
+  grid-area: nav;
+  max-width: 30vw;
+} */

@@ -1,0 +1,16 @@
+main {
+  grid-area: main;
+  min-width: 70vw;
+}
+
+.container menu {
+  grid-area: home;
+}
+
+.container aside {
+  grid-area: nav;
+}
+
+.musicPlayer {
+  grid-area: player;
+}

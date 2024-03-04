@@ -1,0 +1,83 @@
+.aside {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.asideHeader,
+.discover {
+  background-color: #131313;
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.homeHeader,
+.searchHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+.discoverHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filter {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+.filter p {
+  background-color: rgb(37, 37, 37);
+  color: white;
+  border-radius: 1rem;
+  padding: 0 1rem;
+}
+
+.active {
+  background-color: white !important;
+  color: #131313 !important;
+}
+
+.discoverSearch {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.discoverSearch div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.playLists {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 1rem;
+}

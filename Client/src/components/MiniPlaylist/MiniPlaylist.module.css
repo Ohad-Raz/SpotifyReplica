@@ -1,0 +1,24 @@
+.playlist {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.playlist > img {
+  width: 3rem;
+  border-radius: 0.25rem;
+}
+
+.playlist > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: right;
+}
+
+.playlist > div > span {
+  color: rgb(89, 89, 89);
+}

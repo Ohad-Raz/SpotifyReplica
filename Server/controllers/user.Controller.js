@@ -13,13 +13,14 @@ const register = async (req, res) => {
       email: body.email,
     });
     const userDuplicateEmail = await User.findOne({ email: body.email });
+    const token = genrateToken({id: user._id, email: user.email, role: user.role})
 
     if (userDuplicateEmail) {
       return res.send("already has account");
     } else {
       user.save();
 
-      return res.send(user);
+      return res.send({user, token});
     }
   } catch (error) {
     console.log(error);
@@ -40,7 +41,7 @@ const login = async (req, res) => {
         const token = genrateToken({
           id: userFound._id,
           email: userFound.email,
-          role: "admin",
+          role: userFound.role,
         });
         return res.send({ userFound, token });
       } else return res.status(401).send("email or password are incorrect");
