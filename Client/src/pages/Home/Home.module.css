@@ -1,0 +1,27 @@
+.container {
+  background-color: #191414;
+  color: aliceblue;
+  display: grid;
+  grid-template-areas:
+    "main main main main home"
+    "main main main main nav"
+    "main main main main nav"
+    "main main main main nav"
+    "player player player player player";
+}
+
+.container main {
+  grid-area: main;
+}
+
+.container menu {
+  grid-area: home;
+}
+
+.container aside {
+  grid-area: nav;
+}
+
+.musicPlayer {
+  grid-area: player;
+}
