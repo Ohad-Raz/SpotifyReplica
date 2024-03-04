@@ -1,6 +1,7 @@
 const { User } = require("../models/user.model");
 const bcryptjs = require("bcryptjs");
 const { genrateToken } = require("../utils/jwt");
+const { uploadToCloudinary } = require("../cloudiniryFloder/cloudinary");
 
 const register = async (req, res) => {
   const body = await req.body;
@@ -100,6 +101,7 @@ const deleteUser = async (req, res) => {
   }
 };
 const uploadPicture = async (req, res) => {
+  console.log("heloo");
   try {
     const data = await uploadToCloudinary(req.file.path, "post-images");
     await User.updateOne(
