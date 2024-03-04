@@ -1,3 +1,7 @@
+const { User } = require("../models/user.model");
+const bcryptjs = require("bcryptjs");
+const { genrateToken } = require("../utils/jwt");
+
 const register = async (req, res) => {
   const body = await req.body;
   const hash = await bcryptjs.hash(body.password, 10);
@@ -113,7 +117,21 @@ const uploadPicture = async (req, res) => {
     res.status(400).send(error);
   }
 };
+
+const searchUserByName = async (req, res) => {
+  const { name } = req.params;
+  try {
+    const users = await User.find({
+      name: { $regex: name, $options: "im" },
+    }).limit(10);
+    return res.send(users);
+  } catch (error) {
+    console.log(error);
+    res.send("something wrong or not user found");
+  }
+};
 module.exports = {
+  searchUserByName,
   register,
   login,
   getUsers,
