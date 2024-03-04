@@ -12,10 +12,10 @@ const playlistSchema = new Schema({
     ref: "User",
     required: true,
   },
-  tracks: [
+  songs: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Track",
+      ref: "Song",
     },
   ],
   createdAt: {

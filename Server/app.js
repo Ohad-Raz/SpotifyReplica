@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/users", userRoute);
-app.use("/api/v1/playlists", userRoute);
+app.use("/api/v1/playlists", playlistRoute);
 
 // app.use('/api/v1/')
 
