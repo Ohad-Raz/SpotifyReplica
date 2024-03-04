@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const userRoute = require("./routes/user.routes");
 const playlistRoute = require("./routes/playlist.routes");
+const albumRoute = require("./routes/album.routes");
 
 
 const app = express();
@@ -23,6 +24,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/users", userRoute);
 app.use("/api/v1/playlists", playlistRoute);
+app.use("/api/v1/albums", albumRoute);
 
 // app.use('/api/v1/')
 
