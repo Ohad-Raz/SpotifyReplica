@@ -16,7 +16,7 @@ const addGenre = async (req, res) => {
 const getGenres = async (req, res) => {
   try {
     const genres = await Genre.find({})
-      .populate("user")
+      .populate("artist")
       .populate("playlist")
       .populate("songs")
       .populate("albums");
@@ -39,4 +39,17 @@ const deleteGenre = async (req, res) => {
   }
 };
 
-module.exports = { deleteGenre, getGenres, addGenre };
+const searchByName = async (req, res) => {
+  const { name } = req.params;
+  try {
+    const users = await Genre.find({
+      name: { $regex: name, $options: "im" },
+    }).limit(10);
+    return res.send(users);
+  } catch (error) {
+    console.log(error);
+    res.send("something wrong or name found");
+  }
+};
+
+module.exports = { deleteGenre, getGenres, addGenre, searchByName };
