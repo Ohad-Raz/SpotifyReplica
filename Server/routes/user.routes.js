@@ -9,6 +9,7 @@ const {
   editUser,
   deleteUser,
   uploadPicture,
+  searchUserByName,
 } = require("../controllers/user.Controller");
 const { auth } = require("../middlewares/auth");
 const upload = require("../middlewares/upload");
@@ -23,18 +24,7 @@ router.patch("/:id", editUser);
 
 router.delete("/:id", deleteUser);
 
-router.get("/search/:name", async (req, res) => {
-  const { name } = req.params;
-  try {
-    const users = await User.find({
-      name: { $regex: name, $options: "im" },
-    }).limit(10);
-    return res.send(users);
-  } catch (error) {
-    console.log(error);
-    res.send("something wrong or not user found");
-  }
-});
+router.get("/search/:name", searchUserByName);
 
 router.get("/init-user", auth, async (req, res) => {
   const user = req.user;

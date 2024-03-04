@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema({
   likedAlbums: [{ type: mongoose.Schema.Types.ObjectId, ref: "Album" }],
   playlists: [{ type: mongoose.Schema.Types.ObjectId, ref: "Playlist" }],
   artist: { type: mongoose.Schema.Types.ObjectId, ref: "Artist" },
+  createdAt: { type: Date, default: Date.now() },
 });
 
 const User = mongoose.model("User", userSchema);
