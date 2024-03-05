@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 // Define schema for Song
 const songSchema = new mongoose.Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, required: false, ref: 'User' },
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   album: { type: mongoose.Schema.Types.ObjectId, ref: 'Album' },
   title: { type: String, required: false },
   imageUrl: { type: String , required: false}, 
