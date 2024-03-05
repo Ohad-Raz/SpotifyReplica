@@ -9,4 +9,5 @@ router.get("/:id", songController.getSongById);
 router.patch("/:id", songController.updateSong);
 router.delete("/:id", songController.deleteSong);
 router.get("/search/:title", songController.searchByName);
+router.post("/audio/:id", songController.uploadAoudio);
 module.exports = router;

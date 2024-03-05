@@ -1,5 +1,5 @@
 const { Song } = require("../models/song.model");
-
+const { uploadToCloudinary } = require("../cloudiniryFloder/cloudinary");
 exports.createSong = async (req, res) => {
   try {
     const {
@@ -35,7 +35,7 @@ exports.createSong = async (req, res) => {
 
 exports.getAllSongs = async (req, res) => {
   try {
-    const songs = await Song.find({}).populate("user album genre");
+    const songs = await Song.find({});
     res.status(200).json({
       status: "success",
       data: {
@@ -120,5 +120,24 @@ exports.searchByName = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.send("something wrong or name found");
+  }
+};
+exports.uploadAoudio = async (req, res) => {
+  console.log("heloo");
+  try {
+    const data = await uploadToCloudinary(req.file.path, "post-images");
+    await User.updateOne(
+      { _id: req.params.id },
+      {
+        $set: {
+          imageUrl: data.url,
+          publicId: data.public_id,
+        },
+      }
+    );
+    res.status(200).send("user image uploaded with success!");
+  } catch (error) {
+    console.log(error);
+    res.status(400).send(error);
   }
 };
