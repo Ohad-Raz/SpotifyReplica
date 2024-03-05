@@ -3,7 +3,7 @@ const { Album } = require("../models/album.model");
 const getAlbums = async (req, res) => {
   try {
     const query = req.query;
-    const albums = await Album.find({ ...query });
+    const albums = await Album.find({ ...query }).populate({path: "songs"});
     res.send({ status: "Got albums succesfully", data: albums });
   } catch (error) {
     res.status(400).send("Error");
@@ -13,7 +13,7 @@ const getAlbums = async (req, res) => {
 const getSingleAlbum = async (req, res) => {
   const { id } = req.params;
   try {
-    const singleAlbum = await Album.findById(id);
+    const singleAlbum = await Album.findById(id).populate({path: "songs"});
     if (singleAlbum) return res.send(singleAlbum);
     res.send("Couldn't find album");
   } catch (error) {
