@@ -1,39 +1,20 @@
 const { Song } = require("../models/song.model");
 
-exports.createSong = async (req, res) => {
+const createSong = async (req, res) => {
+  const body = req.body;
   try {
-    const {
-      title,
-      user,
-      album,
-      genre,
-      release_date,
-      duration,
-      lyrics,
-      rating,
-      imageUrl,
-      publicId,
-    } = req.body;
-    const song = new Song({
-      title,
-      user,
-      album,
-      genre,
-      release_date,
-      duration,
-      lyrics,
-      rating,
-      imageUrl,
-      publicId,
-    });
-    await song.save();
-    res.status(201).json(song);
+    console.log(req.user);
+    body.user = req.user.id; 
+    const newSong = new Song(body);
+    await newSong.save();
+    res.status(201).json(newSong);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: error.message });
   }
 };
 
-exports.getAllSongs = async (req, res) => {
+const getAllSongs = async (req, res) => {
   try {
     const songs = await Song.find({}).populate("user album genre");
     res.status(200).json({
@@ -47,7 +28,7 @@ exports.getAllSongs = async (req, res) => {
   }
 };
 
-exports.getSongById = async (req, res) => {
+const getSongById = async (req, res) => {
   try {
     const song = await Song.findById(req.params.id).populate(
       "user album genre"
@@ -61,34 +42,14 @@ exports.getSongById = async (req, res) => {
   }
 };
 
-exports.updateSong = async (req, res) => {
+const updateSong = async (req, res) => {
+  const body = req.body;
   try {
-    const {
-      title,
-      user,
-      album,
-      genre,
-      release_date,
-      duration,
-      lyrics,
-      rating,
-      imageUrl,
-      publicId,
-    } = req.body;
     const song = await Song.findById(req.params.id);
     if (!song) {
       return res.status(404).json({ message: "Song not found" });
     }
-    song.title = title;
-    song.user = user;
-    song.album = album;
-    song.genre = genre;
-    song.release_date = release_date;
-    song.duration = duration;
-    song.lyrics = lyrics;
-    song.rating = rating;
-    song.imageUrl = imageUrl;
-    song.publicId = publicId;
+    Object.assign(song, body); 
     song.updated_at = Date.now();
     await song.save();
     res.json(song);
@@ -97,20 +58,20 @@ exports.updateSong = async (req, res) => {
   }
 };
 
-exports.deleteSong = async (req, res) => {
+const deleteSong = async (req, res) => {
   try {
     const song = await Song.findById(req.params.id);
     if (!song) {
       return res.status(404).json({ message: "Song not found" });
     }
-    await song.remove();
+    await song.deleteOne(); // or song.deleteMany() if needed
     res.json({ message: "Song deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-exports.searchByName = async (req, res) => {
+const searchByName = async (req, res) => {
   const { title } = req.params;
   try {
     const songs = await Song.find({
@@ -122,3 +83,5 @@ exports.searchByName = async (req, res) => {
     res.send("something wrong or name found");
   }
 };
+
+module.exports = { createSong, getAllSongs, getSongById, updateSong, deleteSong, searchByName };
