@@ -27,6 +27,8 @@ const addNewAlbum = async(req, res) =>{
         const newAlbum = new Album({title, release_date, genre, artist_id, songs});
         newAlbum.id = newAlbum._id;
         await newAlbum.save();
+        res.send("Album added!", newAlbum);
+        
     } catch (error) {
         res.status(400).send({error: error.message});
     }
