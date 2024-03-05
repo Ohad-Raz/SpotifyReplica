@@ -88,19 +88,18 @@ const searchByName = async (req, res) => {
 };
 
 const uploadAoudio = async (req, res) => {
-  console.log("heloo");
   try {
     const data = await uploadToCloudinary(req.file.path, "post-images");
-    await User.updateOne(
+    await Song.updateOne(
       { _id: req.params.id },
       {
         $set: {
-          imageUrl: data.url,
+          audioUrl: data.url,
           publicId: data.public_id,
         },
       }
     );
-    res.status(200).send("user image uploaded with success!");
+    res.status(200).send("Song audio uploaded with success!");
   } catch (error) {
     console.log(error);
     res.status(400).send(error);

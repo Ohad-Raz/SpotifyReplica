@@ -7,10 +7,11 @@ const albumSchema = new mongoose.Schema(
     genre: { type: String, required: true },
     rating: { type: Number },
     duration: { type: Number },
+    imageUrl: { type: "String" },
+    publicId: { type: "String" },
     artist_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Artist",
-      required: true,
     },
     songs: [
       { type: mongoose.Schema.Types.ObjectId, ref: "Song", required: true },
