@@ -6,7 +6,8 @@ const artistSchema = new mongoose.Schema({
     required: true
   },
   biography: String,
-
+  imageUrl: { type: "String" },
+  publicId: { type: "String" },
   albums: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "Album"
