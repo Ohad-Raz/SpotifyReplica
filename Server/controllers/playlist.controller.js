@@ -3,11 +3,15 @@ const Song = require("../models/song.model");
 
 exports.createPlaylist = async (req, res) => {
   try {
-    const { title, description, owner } = req.body;
+    const { title, description } = req.body;
+    const userId = req.user ? req.user.id : null; // Check if req.user exists
+    if (!userId) {
+      return res.status(401).json({ message: "User not authenticated" });
+    }
     const playlist = new Playlist({
       title,
       description,
-      owner,
+      user: userId, 
     });
     await playlist.save();
     res.status(201).json(playlist);
@@ -15,6 +19,7 @@ exports.createPlaylist = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
 
 exports.getAllPlaylists = async (req, res) => {
   try {
@@ -37,6 +42,23 @@ exports.getPlaylistById = async (req, res) => {
   }
 };
 
+exports.deletePlaylist = async (req, res) => {
+  try {
+    const playlistId = req.params.id;
+
+    const playlist = await Playlist.findById(playlistId);
+    if (!playlist) {
+      return res.status(404).json({ message: "Playlist not found" });
+    }
+
+    await playlist.remove();
+
+    res.json({ message: "Playlist deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 exports.addSongToPlaylist = async (req, res) => {
   try {
     const playlistId = req.params.playlistId;
@@ -47,6 +69,7 @@ exports.addSongToPlaylist = async (req, res) => {
     if (!playlist || !song) {
       return res.status(404).json({ message: "Playlist or song not found" });
     }
+    
 
     playlist.songs.push(songId);
     await playlist.save();
