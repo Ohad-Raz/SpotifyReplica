@@ -2,10 +2,12 @@ const {Artist} = require('../models/artist.model');
 
 exports.createArtist = async (req, res) => {
   try {
-    const { name, biography } = req.body;
+    const { name, biography, albums, songs } = req.body;
     const artist = new Artist({
       name,
-      biography
+      biography,
+      albums, 
+      songs
     });
     await artist.save();
     res.status(201).json(artist);
@@ -17,7 +19,10 @@ exports.createArtist = async (req, res) => {
 
 exports.getAllArtists = async (req, res) => {
   try {
-    const artists = await Artist.find();
+    const artists = await Artist.find().populate([
+      {path: "songs"},
+      {path: "albums"}
+    ]);
     res.json(artists);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -27,7 +32,10 @@ exports.getAllArtists = async (req, res) => {
 
 exports.getArtistById = async (req, res) => {
   try {
-    const artist = await Artist.findById(req.params.id);
+    const artist = await Artist.findById(req.params.id).populate([
+      {path: "songs"},
+      {path: "albums"}
+    ]);
     if (!artist) {
       return res.status(404).json({ message: 'Artist not found' });
     }
