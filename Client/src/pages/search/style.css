@@ -1,0 +1,9 @@
+.musicCard {
+  background-color: rgb(220, 20, 140);
+  display: flex;
+
+  width: 10vw;
+  height: 15vh;
+  border-radius: 8px;
+  overflow: hidden;
+}

@@ -1,5 +1,5 @@
 import styles from "./Sider.module.css";
-
+import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { IoArrowBackSharp } from "react-icons/io5";
@@ -16,11 +16,18 @@ export default function Sider() {
     <aside className={styles.aside}>
       <div className={styles.asideHeader}>
         <div className={styles.homeHeader}>
-          <p>Home</p>
+          <Link to="/">
+            <p>Home</p>
+          </Link>
+
           <FaHome />
         </div>
         <div className={styles.searchHeader}>
-          <p>Search</p>
+          <Link to="/search">
+            {" "}
+            <p>Search</p>
+          </Link>
+
           <FaSearch />
         </div>
       </div>
