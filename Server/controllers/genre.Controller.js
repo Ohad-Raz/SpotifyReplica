@@ -15,7 +15,7 @@ const addGenre = async (req, res) => {
 
 const getGenres = async (req, res) => {
   try {
-    const genres = await Genre.find({}).populate("songs");
+    const genres = await Genre.find({}).populate("albums");
 
     console.log(genres);
     return res.send(genres);

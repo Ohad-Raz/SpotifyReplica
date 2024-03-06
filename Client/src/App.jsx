@@ -1,13 +1,11 @@
 import styles from "./App.module.css";
 import { useContext, useEffect } from "react";
 
-import { useContext } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
 import SearchAlbums from "./pages/search/SearchAlbums";
 import Sider from "./components/Sider/Sider";
-import SearchAlbums from "./pages/search/SearchAlbums.jsx";
 import { UserContext } from "./context/User.jsx";
 import GenreCard from "./components/genre/GenreCard.jsx";
 import { MdOutlineDownloadForOffline } from "react-icons/md";
@@ -24,8 +22,6 @@ function App() {
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTgzNDdhOGFhY2RmOGI3MDk4MzE4OSIsImVtYWlsIjoiYWRtaW5Ac3BvdGlmeS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTcwOTcxNjYwMywiZXhwIjoxNzA5ODAzMDAzfQ.aBgvGqqoEI7v4KOrLJY8J8dxVsQXTFXV9l6mOyjppiw"
   );
 
-
-
   const { logedUser } = useContext(UserContext);
   return (
     <Router>
@@ -37,10 +33,8 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchAlbums />} />
-<<<<<<< HEAD
-=======
+
           <Route path="/genre/:name" element={<GenreCard />} />
->>>>>>> c0d9d9bed72c7887d1c203ed30805fd3b06cca83
         </Routes>
         <header className={styles.header}>
           {logedUser ? (
