@@ -6,6 +6,7 @@ const playlistSchema = new Schema({
     type: String,
     required: true,
   },
+  genre: { type: mongoose.Schema.Types.ObjectId, ref: "Genre" },
   description: String,
   user: {
     type: Schema.Types.ObjectId,

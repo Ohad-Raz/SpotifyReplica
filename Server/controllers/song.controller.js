@@ -19,7 +19,7 @@ const createSong = async (req, res) => {
 
 const getAllSongs = async (req, res) => {
   try {
-    const songs = await Song.find({});
+    const songs = await Song.find();
     res.status(200).json({
       status: "success",
       data: {
@@ -106,6 +106,26 @@ const uploadAoudio = async (req, res) => {
   }
 };
 
+ const uploadPicture = async (req, res) => {
+  try {
+    const data = await uploadToCloudinary(req.file.path, "post-images");
+    await Song.updateOne(
+      { _id: req.params.id },
+      {
+        $set: {
+          imageUrl: data.url,
+          publicId: data.public_id,
+        },
+      }
+    );
+    res.status(200).send("Song image uploaded with success!");
+  } catch (error) {
+    console.log(error);
+    res.status(400).send(error);
+  }
+};
+
+
 module.exports = {
   createSong,
   getAllSongs,
@@ -114,4 +134,5 @@ module.exports = {
   deleteSong,
   searchByName,
   uploadAoudio,
+  uploadPicture,
 };

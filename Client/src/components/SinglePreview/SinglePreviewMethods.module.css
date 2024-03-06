@@ -1,7 +1,0 @@
-.cardsContainer {
-  display: grid;
-  grid-gap: var(--grid-gap);
-  grid-template-columns: repeat(var(--column-count), minmax(0, 1fr));
-  min-width: var(--min-container-width);
- 
-}

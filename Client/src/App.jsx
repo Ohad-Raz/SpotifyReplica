@@ -7,8 +7,6 @@ import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
 import Sider from "./components/Sider/Sider";
 import SearchAlbums from "./pages/search/SearchAlbums.jsx";
 import { UserContext } from "./context/User.jsx";
-import SinglePreviewMethods from "./components/SinglePreview/SinglePreviewMethods";
-import SinglePreviewCard from "./components/SinglePreview/SinglePreviewCard";
 import GenreCard from "./components/genre/GenreCard.jsx";
 function About() {
   return <h1>About</h1>;
