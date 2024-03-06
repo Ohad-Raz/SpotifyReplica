@@ -1,0 +1,11 @@
+.registerNav{
+    display: flex;
+    background-color: #121212;
+    width: 100vw;
+    padding: 30px;
+    margin: 0;
+}
+
+.navLogo{
+    width: 120px;
+}
