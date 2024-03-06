@@ -13,6 +13,7 @@ import Login from "./components/Login/Login.jsx"
 import { MdOutlineDownloadForOffline } from "react-icons/md";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import BottomSignup from "./components/MiniComponents/BottomSignup/BottomSignup.jsx";
 
 function About() {
   return <h1>About</h1>;
@@ -76,7 +77,7 @@ function App() {
         </header>
       </main>
       <div className= {isOnAuth ? styles.none : styles.musicPlayer}>
-        <MusicPlayer/>
+        {!logedUser ? <BottomSignup setIsOnAuth={setIsOnAuth}/> : <MusicPlayer/>}
       </div>
     </Router>
   );

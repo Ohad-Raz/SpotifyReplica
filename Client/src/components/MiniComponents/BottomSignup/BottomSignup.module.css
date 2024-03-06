@@ -1,0 +1,25 @@
+.bottomSignup{
+    background-image: linear-gradient(90deg, #af2896, #509bf5);
+    width: 100%;
+    padding: 11px 24px 7px 15px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 999999999;
+    position: fixed;
+    bottom: 0;
+}
+.bottomSignup p{
+    font-size: 0.7em;
+    font-weight: 700;
+}
+
+.bottomSignup button{
+    background-color: #fff;
+    border-radius: 99999px;
+    padding: 10px 30px;
+    font-weight: 700;
+    color: #242424;
+}
+.bottomSignup button:hover{
+    transform: scale(1.05);
+}
