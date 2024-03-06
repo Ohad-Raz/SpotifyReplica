@@ -19,6 +19,7 @@ function About() {
 function App() {
   const logedUser = useContext(UserContext);
   console.log(logedUser);
+  console.log("urillll");
   return (
     <Router>
       <div className="aside">
