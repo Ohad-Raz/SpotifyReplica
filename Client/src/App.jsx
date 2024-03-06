@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
 import Sider from "./components/Sider/Sider";
+import SearchAlbums from "./pages/search/SearchAlbums.jsx";
 import { UserContext } from "./context/User.jsx";
 import SinglePreviewMethods from "./components/SinglePreview/SinglePreviewMethods";
 import SinglePreviewCard from "./components/SinglePreview/SinglePreviewCard";
@@ -15,7 +16,7 @@ function About() {
 function App() {
   const logedUser = useContext(UserContext);
   console.log(logedUser);
-  console.log("urillll");
+
   return (
     <Router>
       <div className="aside">
@@ -25,11 +26,10 @@ function App() {
         <Routes>
           <Route path="/about" element={<About />} />
           <Route path="/" element={<Home />} />
+          <Route path="/search" element={<SearchAlbums />} />
         </Routes>
       </main>
-      <div className={styles.musicPlayer}>
-      {/* <SinglePreviewMethods/> */}
-      </div>
+      <div className={styles.musicPlayer}>{/* <SinglePreviewMethods/> */}</div>
     </Router>
   );
 }
