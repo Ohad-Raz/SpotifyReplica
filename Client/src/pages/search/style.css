@@ -1,9 +1,84 @@
-.musicCard {
-  background-color: rgb(220, 20, 140);
+.GenreCard {
   display: flex;
 
-  width: 10vw;
-  height: 15vh;
+  flex-direction: column;
+  width: 13vw;
+  justify-content: space-between;
+  height: 20vh;
   border-radius: 8px;
+  padding: 1rem;
   overflow: hidden;
+  font-weight: bold;
+}
+.containerSearch {
+  margin-left: 2rem;
+  overflow-y: scroll;
+
+  height: 80vh;
+}
+.cardGenres {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  overflow: auto;
+  gap: 1rem;
+}
+.containerSearch h2 {
+  margin-bottom: 1rem;
+}
+.GenreCard img {
+  width: 7vw;
+  height: 8;
+  align-self: flex-end;
+
+  position: relative;
+  left: 1.5rem;
+  top: 1.5rem;
+  transform: rotateZ(20deg);
+}
+.musicCard {
+  background-color: rgb(220, 20, 140);
+}
+.podcusCard {
+  background-color: rgb(0, 100, 80);
+}
+.LiveCard {
+  background-color: rgb(132, 0, 231);
+}
+.madeForYouCard {
+  background-color: rgb(30, 50, 100);
+}
+
+.ReleasesCard {
+  background-color: rgb(232, 17, 91);
+}
+.MerchCard {
+  background-color: rgb(39, 133, 106);
+}
+.PopCard {
+  background-color: rgb(20, 138, 8);
+}
+.Hip-HopCard {
+  background-color: rgb(80, 55, 80);
+}
+.RockCard {
+  background-color: rgb(233, 20, 41);
+}
+.LatinCard {
+  background-color: rgb(225, 17, 140);
+}
+.ChartsCard {
+  background-color: rgb(13, 115, 236);
+}
+.EducationalCard {
+  background-color: rgb(71, 125, 149);
+}
+.DocumentaryCard {
+  background-color: rgb(80, 55, 80);
+}
+.ComedyCard {
+  background-color: rgb(175, 40, 150);
+}
+.Charts2Card {
+  background-color: rgb(141, 103, 171);
 }

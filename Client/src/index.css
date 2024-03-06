@@ -46,6 +46,14 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1.5;
+
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: hsla(0, 0%, 100%, 0.3);
+  }
+
   background-color: black;
 }
 
@@ -83,7 +91,7 @@ img {
 
 #root {
   position: fixed;
-  max-height: 100vh;
+  max-height: 100%;
   min-width: 100vw;
   background-color: black;
   color: aliceblue;
