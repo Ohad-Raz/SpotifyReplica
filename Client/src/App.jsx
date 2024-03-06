@@ -1,7 +1,5 @@
 import styles from "./App.module.css";
 import { useContext, useEffect } from "react";
-
-import { useContext } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import MusicPlayer from "./components/MusicPlayer/MusicPlayer";

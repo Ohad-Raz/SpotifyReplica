@@ -1,4 +1,5 @@
 const { Album } = require("../models/album.model");
+const { Artist } = require("../models/artist.model");
 
 const getAlbums = async (req, res) => {
   try {
@@ -22,22 +23,25 @@ const getSingleAlbum = async (req, res) => {
 };
 
 const addNewAlbum = async (req, res) => {
-  const { title, release_date, genre, artist_id, songs } = req.body;
+  const body = req.body;
+
   try {
-    const newAlbum = new Album({
-      title,
-      release_date,
-      genre,
-      artist_id,
-      songs,
-    });
-    newAlbum.id = newAlbum._id;
+    const newAlbum = new Album(body);
     await newAlbum.save();
-    res.send("Album added!", newAlbum);
+
+    await Artist.findByIdAndUpdate(
+      newAlbum.artist_id,
+      { $push: { albums: newAlbum._id } },
+      { new: true, upsert: true }
+    );
+    
+    res.status(201).json({ message: "Album added!", album: newAlbum });
   } catch (error) {
-    res.status(400).send({ error: error.message });
+    console.error(error);
+    res.status(500).json({ error: error.message });
   }
 };
+
 
 const deleteAlbum = async (req, res) => {
   const { id } = req.params;
