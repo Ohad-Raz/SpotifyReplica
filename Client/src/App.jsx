@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
+import SearchAlbums from "./pages/search/SearchAlbums";
 import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
 import Sider from "./components/Sider/Sider";
 import { UserContext } from "./context/User.jsx";
