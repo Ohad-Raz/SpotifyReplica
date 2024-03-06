@@ -1,6 +1,6 @@
 main {
   grid-area: main;
-  min-width: 70vw;
+  /* min-width: 70vw; */
 }
 
 .container menu {
@@ -9,6 +9,8 @@ main {
 
 .container aside {
   grid-area: nav;
+  /* position: fixed; */
+  right: 0;
 }
 
 .musicPlayer {

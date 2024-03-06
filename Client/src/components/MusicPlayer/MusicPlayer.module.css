@@ -1,12 +1,12 @@
 .musicPlayer {
   display: flex;
-  flex-direction: rows;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
+  padding: 1rem;
   background-color: black;
-  position: fixed;
   bottom: 0;
+  height: 15vh;
   width: 100%;
 }
 
