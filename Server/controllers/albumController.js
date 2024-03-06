@@ -1,5 +1,7 @@
 const { Album } = require("../models/album.model");
 const { Artist } = require("../models/artist.model");
+const { Genre } = require("../models/genre.model");
+
 
 const getAlbums = async (req, res) => {
   try {
@@ -31,6 +33,11 @@ const addNewAlbum = async (req, res) => {
 
     await Artist.findByIdAndUpdate(
       newAlbum.artist_id,
+      { $push: { albums: newAlbum._id } },
+      { new: true, upsert: true }
+    );
+    await Genre.findByIdAndUpdate(
+      newAlbum.genre_id,
       { $push: { albums: newAlbum._id } },
       { new: true, upsert: true }
     );
