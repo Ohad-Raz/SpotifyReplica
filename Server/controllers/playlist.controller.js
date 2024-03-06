@@ -11,7 +11,7 @@ exports.createPlaylist = async (req, res) => {
     const playlist = new Playlist({
       title,
       description,
-      user: userId, 
+      user: userId,
     });
     await playlist.save();
     res.status(201).json(playlist);
@@ -19,7 +19,6 @@ exports.createPlaylist = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
 
 exports.getAllPlaylists = async (req, res) => {
   try {
@@ -42,6 +41,15 @@ exports.getPlaylistById = async (req, res) => {
   }
 };
 
+exports.getUserPlaylist = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const playlists = await Playlist.find({ user: userId }).populate("songs");
+    res.json(playlists);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 exports.deletePlaylist = async (req, res) => {
   try {
     const playlistId = req.params.id;
@@ -69,7 +77,6 @@ exports.addSongToPlaylist = async (req, res) => {
     if (!playlist || !song) {
       return res.status(404).json({ message: "Playlist or song not found" });
     }
-    
 
     playlist.songs.push(songId);
     await playlist.save();

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styles from "./Sider.module.css";
 import { Link } from "react-router-dom";
 import { FaHome, FaSearch } from "react-icons/fa"; // Import the search icon
@@ -7,12 +7,18 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { BsCollection } from "react-icons/bs";
 import { MdCancel } from "react-icons/md";
 import { FaList } from "react-icons/fa";
-
+import axios from "axios";
 import MiniPlaylist from "../MiniPlaylist/MiniPlaylist";
+import { apiUrl } from "../../config/apiConfig";
 
-import playlists from "../../dummy-data/playlist";
+import { UserContext } from "../../context/User.jsx";
+
+import dummyPlaylists from "../../dummy-data/playlist";
 
 export default function Sider() {
+  const { logedUser } = useContext(UserContext);
+  logedUser && console.log(logedUser);
+  const [playlists, setPlaylists] = useState(dummyPlaylists);
   const [showInput, setShowInput] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
@@ -23,20 +29,29 @@ export default function Sider() {
     }
   };
 
+  const fetchPlaylists = () => {
+    axios
+      .get(`${apiUrl}/api/v1/playlists/${logedUser.id}`)
+      .then((res) => {
+        setPlaylists(res.data.items);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
 
-  useEffect(() => {
-    console.log(inputValue);
-  }, [inputValue]);
+  // useEffect(() => {
+  //   console.log(inputValue);
+  // }, [inputValue]);
 
   const handleSearch = () => {
     console.log("Search input:", inputValue);
     // Perform search-related operations here
   };
 
-  // Filter playlists based on input value
   const filteredPlaylists = playlists.filter((playlist) => {
     return playlist.name.toLowerCase().includes(inputValue.toLowerCase());
   });
@@ -101,8 +116,8 @@ export default function Sider() {
           </div>
         </div>
         <div className={styles.playLists}>
-          {filteredPlaylists.map((playlist) => {
-            return <MiniPlaylist key={playlist.id} playlist={playlist} />;
+          {filteredPlaylists.map((playlist, index) => {
+            return <MiniPlaylist key={index} playlist={playlist} />;
           })}
         </div>
       </div>

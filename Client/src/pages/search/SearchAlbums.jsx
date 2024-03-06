@@ -31,11 +31,11 @@ export default function SearchAlbums() {
 
         <Link className="MerchCard GenreCard" to="/genre/Merch">
           Merch
-          <img src={musicImg} alt="" srcset="" />
+          <img src={musicImg} alt="" src="" />
         </Link>
         <Link className="PopCard GenreCard" to="/genre/Pop">
           Pop
-          <img src={musicImg} alt="" srcset="" />
+          <img src={musicImg} alt="" src="" />
         </Link>
         <Link className="Hip-HopCard GenreCard" to="/genre/Hip-Hop">
           Hip-Hop
@@ -71,83 +71,83 @@ export default function SearchAlbums() {
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" srcset="" />
+          <img src={musicImg} alt="" src="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" srcset="" />
+          <img src={musicImg} alt="" src="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" srcset="" />
+          <img src={musicImg} alt="" src="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" srcset="" />
+          <img src={musicImg} alt="" src="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" srcset="" />
+          <img src={musicImg} alt="" src="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" srcset="" />
+          <img src={musicImg} alt="" src="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" srcset="" />
+          <img src={musicImg} alt="" src="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" srcset="" />
+          <img src={musicImg} alt="" src="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" srcset="" />
+          <img src={musicImg} alt="" src="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" srcset="" />
+          <img src={musicImg} alt="" src="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" srcset="" />
+          <img src={musicImg} alt="" src="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" srcset="" />
+          <img src={musicImg} alt="" src="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" srcset="" />
+          <img src={musicImg} alt="" src="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" srcset="" />
+          <img src={musicImg} alt="" src="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" srcset="" />
+          <img src={musicImg} alt="" src="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" srcset="" />
+          <img src={musicImg} alt="" src="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" srcset="" />
+          <img src={musicImg} alt="" src="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" srcset="" />
+          <img src={musicImg} alt="" src="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" srcset="" />
+          <img src={musicImg} alt="" src="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" srcset="" />
+          <img src={musicImg} alt="" src="" />
         </Link>
       </div>
     </div>

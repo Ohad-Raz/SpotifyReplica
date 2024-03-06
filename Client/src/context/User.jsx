@@ -6,7 +6,38 @@ export const UserContext = createContext();
 
 export default function UserProvider({ children }) {
   const [inputData, setInputData] = useState({});
-  const [logedUser, setLogedUser] = useState({});
+  const [logedUser, setLogedUser] = useState(null); // Changed initial state to null
+
+  // console.log(apiUrl);
+  useEffect(() => {
+    const checkToken = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        let URL = `${apiUrl}api/v1/users/user`;
+        console.log(URL);
+        if (token) {
+          const res = await axios.get(URL, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+
+          console.log(res.data);
+          if (res.data.status === "success") {
+            setLogedUser(res.data.data.user); // Set the user obtained from token validation
+          } else {
+            // Token is invalid or expired, clear localStorage and set logged user to null
+            localStorage.removeItem("token");
+            setLogedUser(null);
+          }
+        }
+      } catch (error) {
+        console.log("Error checking token:", error);
+      }
+    };
+
+    checkToken();
+  }, []);
 
   const handleChange = (e) => {
     setInputData({ ...inputData, [e.target.name]: e.target.value });
@@ -20,27 +51,7 @@ export default function UserProvider({ children }) {
     setLogedUser(resUser.data.userFound);
 
     localStorage.setItem("token", resUser.data.token);
-    // location.reload();
   };
-
-  const getUser = async () => {
-    try {
-      const token = localStorage.getItem("token");
-      const res = await axios.get(`${apiUrl}users/init-user`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const data = await res.data;
-      console.log(data);
-      setLogedUser(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getUser();
-  }, []);
 
   return (
     <UserContext.Provider

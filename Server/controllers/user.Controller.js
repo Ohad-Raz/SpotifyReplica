@@ -1,5 +1,7 @@
 const { User } = require("../models/user.model");
 const bcryptjs = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
 const { genrateToken } = require("../utils/jwt");
 const { uploadToCloudinary } = require("../cloudiniryFloder/cloudinary");
 
@@ -13,20 +15,25 @@ const register = async (req, res) => {
       email: body.email,
     });
     const userDuplicateEmail = await User.findOne({ email: body.email });
-    const token = genrateToken({id: user._id, email: user.email, role: user.role})
+    const token = genrateToken({
+      id: user._id,
+      email: user.email,
+      role: user.role,
+    });
 
     if (userDuplicateEmail) {
       return res.send("already has account");
     } else {
       user.save();
 
-      return res.send({user, token});
+      return res.send({ user, token });
     }
   } catch (error) {
     console.log(error);
     res.send("something wrong");
   }
 };
+
 const login = async (req, res) => {
   try {
     const body = await req.body;
@@ -53,6 +60,7 @@ const login = async (req, res) => {
     res.send("something wrong");
   }
 };
+
 const getUsers = async (req, res) => {
   try {
     const users = await User.find({});
@@ -101,6 +109,36 @@ const deleteUser = async (req, res) => {
     res.send("something wrong");
   }
 };
+
+const getUserByToken = async (req, res) => {
+  const token = req.headers.authorization.split(" ")[1];
+  console.log(token);
+
+  if (!token) {
+    return res.status(401).json({ message: "No token provided" });
+  }
+
+  try {
+    // Verify the token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.id);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Return user data
+    res.status(200).json({
+      status: "success",
+      data: {
+        user,
+      },
+    });
+  } catch (error) {
+    console.error("Error retrieving user:", error);
+    return res.status(401).json({ message: "Invalid token" });
+  }
+};
+
 const uploadPicture = async (req, res) => {
   console.log("heloo");
   try {
@@ -133,6 +171,7 @@ const searchUserByName = async (req, res) => {
     res.send("something wrong or not user found");
   }
 };
+
 module.exports = {
   searchUserByName,
   register,
@@ -142,4 +181,5 @@ module.exports = {
   editUser,
   getUserById,
   uploadPicture,
+  getUserByToken,
 };
