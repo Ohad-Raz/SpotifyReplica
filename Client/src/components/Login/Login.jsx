@@ -43,7 +43,7 @@ const [passwordHidden, setPasswordHidden] = useState("password");
         setUser(res.data.userFound);
         setToken(res.data.token);
         console.log('Logged in successfully:', res.data.userFound);
-        // window.location.href = '/';
+        window.location.href = '/';
     } catch (error) {
         console.error("Failed to login:", error);
     }
@@ -69,12 +69,12 @@ const [passwordHidden, setPasswordHidden] = useState("password");
         <form className={styles.passwordForm} onSubmit={handleLogin}>
                 <div className={styles.email}>
                         <label htmlFor="password">Email</label>
-                        <input type="email" name="email" id="email" required="true" onChange={handleInputChange} className={styles.inputs}/>
+                        <input type="email" name="email" id="email" required={true} onChange={handleInputChange} className={styles.inputs}/>
                 </div>
                 <div className={styles.email}>
                         <label htmlFor="password">Password</label>
                         <span className={styles.eye} onClick={togglePasswordType}>{passwordIcon}</span>
-                        <input type={passwordHidden} name="password" id="password" required="true" onChange={handleInputChange} className={styles.inputs}/>
+                        <input type={passwordHidden} name="password" id="password" required={true} onChange={handleInputChange} className={styles.inputs}/>
                 </div>
                 <button className={styles.nextButton}>Login</button>
         </form>

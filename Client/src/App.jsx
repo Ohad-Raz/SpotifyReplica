@@ -1,15 +1,15 @@
 import styles from "./App.module.css";
-import { useContext, useEffect } from "react";
-
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
-import SearchAlbums from "./pages/search/SearchAlbums";
 import Sider from "./components/Sider/Sider";
 import SearchAlbums from "./pages/search/SearchAlbums.jsx";
 import { UserContext } from "./context/User.jsx";
 import GenreCard from "./components/genre/GenreCard.jsx";
+import Register from "./components/Register/Register.jsx";
+import Login from "./components/Login/Login.jsx"
 import { MdOutlineDownloadForOffline } from "react-icons/md";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
@@ -24,23 +24,21 @@ function App() {
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTgzNDdhOGFhY2RmOGI3MDk4MzE4OSIsImVtYWlsIjoiYWRtaW5Ac3BvdGlmeS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTcwOTcxNjYwMywiZXhwIjoxNzA5ODAzMDAzfQ.aBgvGqqoEI7v4KOrLJY8J8dxVsQXTFXV9l6mOyjppiw"
   );
 
-
-
   const { logedUser } = useContext(UserContext);
+  const [isOnAuth, setIsOnAuth] = useState(false);
+
   return (
     <Router>
-      <div className="aside">
-        <Sider />
+      <div className= {isOnAuth ? styles.none : 'aside'}>
+        <Sider/>
       </div>
-      <main>
+      <main className={isOnAuth ? styles.authMain : ''}>
         <Routes>
           <Route path="/about" element={<About />} />
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchAlbums />} />
-<<<<<<< HEAD
-=======
-          <Route path="/genre/:name" element={<GenreCard />} />
->>>>>>> c0d9d9bed72c7887d1c203ed30805fd3b06cca83
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
         <header className={styles.header}>
           {logedUser ? (
@@ -61,8 +59,8 @@ function App() {
           ) : (
             <>
               <div className={styles.auth}>
-                <p className={styles.login}>LOGIN</p>
-                <p className={styles.register}>REGISTER</p>
+              <NavLink to="/login" className={styles.login} onClick={() => setIsOnAuth(true)}>Log In</NavLink>
+              <NavLink to="/register" className={styles.register} onClick={() => setIsOnAuth(true)}>Sign Up</NavLink>
               </div>
             </>
           )}
@@ -76,8 +74,8 @@ function App() {
           </div>
         </header>
       </main>
-      <div className={styles.musicPlayer}>
-        <MusicPlayer />
+      <div className= {isOnAuth ? styles.none : styles.musicPlayer}>
+        <MusicPlayer/>
       </div>
     </Router>
   );

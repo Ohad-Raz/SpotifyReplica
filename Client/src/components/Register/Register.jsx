@@ -56,7 +56,7 @@ function Register() {
         setUser(res.data.user);
         setToken(res.data.token);
         console.log('Register successful:', user);
-        // window.location.href = '/';
+        window.location.href = '/';
     } catch (error) {
         console.error("Failed to register:", error);
     }
@@ -70,7 +70,7 @@ function Register() {
                 <form className={styles.emailForm} onSubmit={handleEmailSubmit}>
                     <div className={styles.email}>
                         <label htmlFor="email">Email address</label>
-                        <input type="email" name="email" id="email" required="true" className={styles.inputs} onChange={handleInputChange}/>
+                        <input type="email" name="email" id="email" required={true} className={styles.inputs} onChange={handleInputChange}/>
                     </div>
                     <button className={styles.nextButton}>Next</button>
                 </form>
@@ -112,12 +112,12 @@ function Register() {
                 <form className={styles.passwordForm} onSubmit={handleRegister}>
                 <div className={styles.email}>
                         <label htmlFor="password">Username</label>
-                        <input type="text" name="username" id="username" required="true" onChange={handleInputChange} className={styles.inputs}/>
+                        <input type="text" name="username" id="username" required={true} onChange={handleInputChange} className={styles.inputs}/>
                 </div>
                 <div className={styles.email}>
                         <label htmlFor="password">Password</label>
                         <span className={styles.eye} onClick={togglePasswordType}>{passwordIcon}</span>
-                        <input type={passwordHidden} name="password" id="password" required="true" onChange={handleInputChange} className={styles.inputs}/>
+                        <input type={passwordHidden} name="password" id="password" required={true} onChange={handleInputChange} className={styles.inputs}/>
                 </div>
                 <button className={styles.nextButton}>Register</button>
                 </form>
