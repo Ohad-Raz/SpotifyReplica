@@ -1,5 +1,5 @@
 import styles from "./App.module.css";
-
+import { useContext } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
@@ -17,6 +17,7 @@ function About() {
 }
 
 function App() {
+  const { logedUser } = useContext(UserContext);
   return (
     <Router>
       <div className="aside">
