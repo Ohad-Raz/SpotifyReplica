@@ -1,11 +1,6 @@
 import styles from "./App.module.css";
-<<<<<<< HEAD
-import { useContext, useEffect } from "react";
-
-=======
 import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
->>>>>>> 8343d3005a834f89eeb9633d5599e255a7eb9e6f
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import SearchAlbums from "./pages/search/SearchAlbums";
@@ -42,13 +37,9 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchAlbums />} />
-<<<<<<< HEAD
-
           <Route path="/genre/:name" element={<GenreCard />} />
-=======
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
->>>>>>> 8343d3005a834f89eeb9633d5599e255a7eb9e6f
         </Routes>
         <header className={styles.header}>
           {logedUser ? (
