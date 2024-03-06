@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import styles from "./Sider.module.css";
 import { Link } from "react-router-dom";
 import { FaHome, FaSearch } from "react-icons/fa"; // Import the search icon
