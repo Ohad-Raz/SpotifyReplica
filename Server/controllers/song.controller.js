@@ -6,10 +6,15 @@ const createSong = async (req, res) => {
   const body = req.body;
 
   try {
-    console.log(req.user);
     body.user = req.user.id;
     const newSong = new Song(body);
     await newSong.save();
+
+    await Song.findByIdAndUpdate(
+      Song,
+      { $push: { songs: newSong._id } },
+      { new: true, upsert: true }
+    );
     res.status(201).json(newSong);
   } catch (error) {
     console.error(error);

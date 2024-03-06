@@ -8,7 +8,7 @@ const songSchema = new mongoose.Schema(
     title: { type: String, required: false },
     audioUrl: { type: String, required: false },
     publicId: { type: String, required: false },
-    genre: [{ type: String, required: false, ref: "Genre" }],
+    genre: { type: mongoose.Schema.Types.ObjectId, ref: "Genre" },
     likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Like" }],
     release_date: { type: Date, required: false },
     duration: { type: Number, required: false },
@@ -21,4 +21,4 @@ const songSchema = new mongoose.Schema(
 
 // Create models based on the schemas
 const Song = mongoose.model("Song", songSchema);
-module.exports =  Song ;
+module.exports = { Song };
