@@ -7,6 +7,7 @@ export const UserContext = createContext();
 export default function UserProvider({ children }) {
   const [inputData, setInputData] = useState({});
   const [logedUser, setLogedUser] = useState(null); // Changed initial state to null
+  const [token, setToken] = useState('');
 
   // console.log(apiUrl);
   useEffect(() => {
@@ -39,6 +40,14 @@ export default function UserProvider({ children }) {
     checkToken();
   }, []);
 
+  useEffect(() =>{
+    if(token == ''){
+        setToken(localStorage.getItem('token') ?? '');
+    } else{
+        localStorage.setItem('token', token);
+    }
+},[token]);
+
   const handleChange = (e) => {
     setInputData({ ...inputData, [e.target.name]: e.target.value });
   };
@@ -55,7 +64,7 @@ export default function UserProvider({ children }) {
 
   return (
     <UserContext.Provider
-      value={{ handleChange, handleSubmit, logedUser, setLogedUser }}
+      value={{ handleChange, handleSubmit, logedUser, setLogedUser, setToken }}
     >
       {children}
     </UserContext.Provider>
