@@ -3,6 +3,7 @@ import { useContext, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
+import SearchAlbums from "./pages/search/SearchAlbums";
 import Sider from "./components/Sider/Sider";
 import SearchAlbums from "./pages/search/SearchAlbums.jsx";
 import { UserContext } from "./context/User.jsx";
@@ -34,7 +35,10 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchAlbums />} />
+<<<<<<< HEAD
+=======
           <Route path="/genre/:name" element={<GenreCard />} />
+>>>>>>> c0d9d9bed72c7887d1c203ed30805fd3b06cca83
         </Routes>
         <header className={styles.header}>
           {logedUser ? (
