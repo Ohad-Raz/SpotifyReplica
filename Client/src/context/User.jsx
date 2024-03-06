@@ -14,7 +14,7 @@ export default function UserProvider({ children }) {
       try {
         const token = localStorage.getItem("token");
         let URL = `${apiUrl}api/v1/users/user`;
-        console.log(URL);
+        // console.log(URL);
         if (token) {
           const res = await axios.get(URL, {
             headers: {
@@ -22,7 +22,7 @@ export default function UserProvider({ children }) {
             },
           });
 
-          console.log(res.data);
+          // console.log(res.data);
           if (res.data.status === "success") {
             setLogedUser(res.data.data.user); // Set the user obtained from token validation
           } else {
