@@ -4,7 +4,7 @@ const albumSchema = new mongoose.Schema(
   {
     title: { type: String, required: true },
     release_date: { type: Date, required: true },
-    genre: { type: String, required: true },
+    genre: { type: mongoose.Schema.Types.ObjectId, ref: "Genre" },
     rating: { type: Number },
     duration: { type: Number },
     imageUrl: { type: "String" },

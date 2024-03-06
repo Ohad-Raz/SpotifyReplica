@@ -16,3 +16,74 @@ main {
 .musicPlayer {
   grid-area: player;
 }
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.userMenu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5vw;
+}
+
+.userIcon {
+  width: 3vw;
+  height: 3vw;
+}
+.switch {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.switch div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: aliceblue;
+  background-color: rgba(87, 87, 87, 0.433);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.installApp {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.auth {
+  display: flex;
+  flex-direction: row;
+}
+
+.register,
+.login {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0 2rem;
+  border-radius: 5rem;
+  font-weight: 700;
+}
+
+.register {
+  color: grey;
+}
+
+.login {
+  color: black;
+  background-color: white;
+}

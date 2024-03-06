@@ -10,17 +10,29 @@ import { FaFacebook } from "react-icons/fa6";
 import { FaApple } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
 import { FaRegEyeSlash } from "react-icons/fa";
+import { FaRegEye } from "react-icons/fa";
 
 
 function Register() {
   const [isRegister, setIsRegister] = useState(true);
   const [passwordHidden, setPasswordHidden] = useState("password");
+  const [passwordIcon , setPasswordIcon] = useState(<FaRegEyeSlash/>)
   const [user, setUser] = useState({
     email: '',
     username: '',
     password: ''
   });
   const {setToken} = useContext(UserContext);
+
+  const togglePasswordType = () =>{
+    if(passwordHidden === "password"){
+        setPasswordHidden === "text"
+        setPasswordIcon(<FaRegEye />)
+    } else if(passwordHidden === "text"){
+        setPasswordHidden("password")
+        setPasswordIcon(<FaRegEyeSlash/>)
+    }
+  }
 
   const handleInputChange = (e) =>{
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -104,8 +116,8 @@ function Register() {
                 </div>
                 <div className={styles.email}>
                         <label htmlFor="password">Password</label>
-                        <FaRegEyeSlash className={styles.eye}/>
-                        <input type="password" name="password" id="password" required="true" onChange={handleInputChange} className={styles.inputs}/>
+                        <span className={styles.eye} onClick={togglePasswordType}>{passwordIcon}</span>
+                        <input type={passwordHidden} name="password" id="password" required="true" onChange={handleInputChange} className={styles.inputs}/>
                 </div>
                 <button className={styles.nextButton}>Register</button>
                 </form>

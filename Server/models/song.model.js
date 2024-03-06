@@ -5,6 +5,7 @@ const songSchema = new mongoose.Schema(
   {
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
     album: { type: mongoose.Schema.Types.ObjectId, ref: "Album" },
+    artist: { type: mongoose.Schema.Types.ObjectId, ref: "Artist" },
     title: { type: String, required: false },
     audioUrl: { type: String, required: false },
     publicId: { type: String, required: false },
@@ -15,6 +16,8 @@ const songSchema = new mongoose.Schema(
     plays: { type: Number, default: 0 },
     lyrics: { type: String },
     rating: { type: Number },
+    imageUrl: { type: "String" },
+    publicId: { type: "String" },
   },
   { timestamps: true }
 );
