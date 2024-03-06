@@ -123,29 +123,40 @@ export default function SearchAlbums() {
           At Home
           <img src={musicImg} alt="" />
         </Link>
-        <Link className="madeForYouCard GenreCard" to="/genre/Music">
-          Made For You
-          <img src={musicImg} alt="" />
+        <Link className="MetalCard GenreCard" to="/genre/Metal">
+          Metal
+          <img
+            src="https://i.scdn.co/image/ab67fb8200005cafefa737b67ec51ec989f5a51d"
+            alt=""
+          />
         </Link>
-        <Link className="madeForYouCard GenreCard" to="/genre/Music">
-          Made For You
-          <img src={musicImg} alt="" />
+        <Link className="JazzCard GenreCard" to="/genre/Jazz">
+          Jazz
+          <img
+            src="https://i.scdn.co/image/ab67fb8200005cafe289743024639ea8f202364d"
+            alt=""
+          />
         </Link>
-        <Link className="madeForYouCard GenreCard" to="/genre/Music">
-          Made For You
-          <img src={musicImg} alt="" />
+        <Link className="TrendingCard GenreCard" to="/genre/Trending">
+          Trending
+          <img
+            src="https://i.scdn.co/image/ab67fb8200005caf1867113f5218598847550acd"
+            alt=""
+          />
         </Link>
-        <Link className="madeForYouCard GenreCard" to="/genre/Music">
-          Made For You
-          <img src={musicImg} alt="" />
+        <Link className="WellnessCard GenreCard" to="/genre/Wellness">
+          Wellness
+          <img
+            src="https://i.scdn.co/image/ab67fb8200005caf8dec632effd9735fa8aba06e"
+            alt=""
+          />
         </Link>
-        <Link className="madeForYouCard GenreCard" to="/genre/Music">
-          Made For You
-          <img src={musicImg} alt="" />
-        </Link>
-        <Link className="madeForYouCard GenreCard" to="/genre/Music">
-          Made For You
-          <img src={musicImg} alt="" />
+        <Link className="AnimeCard GenreCard" to="/genre/Anime">
+          Anime
+          <img
+            src="https://i.scdn.co/image/ab67706f00000002c19c5f13f8b3ff2d73ff00bc"
+            alt=""
+          />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
