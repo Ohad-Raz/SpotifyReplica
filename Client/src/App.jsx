@@ -9,6 +9,7 @@ import SearchAlbums from "./pages/search/SearchAlbums.jsx";
 import { UserContext } from "./context/User.jsx";
 import SinglePreviewMethods from "./components/SinglePreview/SinglePreviewMethods";
 import SinglePreviewCard from "./components/SinglePreview/SinglePreviewCard";
+import GenreCard from "./components/genre/GenreCard.jsx";
 function About() {
   return <h1>About</h1>;
 }
@@ -27,6 +28,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchAlbums />} />
+          <Route path="/genre/:name" element={<GenreCard />} />
         </Routes>
       </main>
       <div className={styles.musicPlayer}>{/* <SinglePreviewMethods/> */}</div>
