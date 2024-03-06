@@ -5,6 +5,7 @@ import styles from'./SinglePreviewMethods.module.css'; // Again, remember to sty
 function SinglePreviewMethods() {
   const previewCard = [
     { imageUrl: 'https://rb.gy/1bv5q3', name: 'bohemian rhapsody', title: 'another brick in the wall ' },
+    { imageUrl: 'https://i.scdn.co/image/ab67616d00001e02056e90910cbaf5c5b892aeba', name: 'Queen', title: 'The Game' },
     
     
 

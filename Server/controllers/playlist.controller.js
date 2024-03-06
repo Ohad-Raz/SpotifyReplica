@@ -107,3 +107,23 @@ exports.removeSongFromPlaylist = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+exports.updatePlaylist = async (req, res) => {
+  try {
+    const { title, description } = req.body;
+    const playlistId = req.params.id;
+
+    const playlist = await Playlist.findById(playlistId);
+    if (!playlist) {
+      return res.status(404).json({ message: "Playlist not found" });
+    }
+
+    playlist.title = title;
+    playlist.description = description;
+    await playlist.save();
+
+    res.json(playlist);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

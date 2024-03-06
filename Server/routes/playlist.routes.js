@@ -4,9 +4,10 @@ const playlistController = require("../controllers/playlist.controller");
 const { auth, authorize } = require("../middlewares/auth");
 
 router.post("/", auth, playlistController.createPlaylist);
-router.get("/", auth, playlistController.getAllPlaylists);
+router.get("/", playlistController.getAllPlaylists);
 router.get("/:id", auth, playlistController.getPlaylistById);
 router.get("/:userId", auth, playlistController.getUserPlaylist);
+router.patch("/:id", auth, playlistController.updatePlaylist); // Add this line for updating playlist
 router.post(
   "/:playlistId/add-song",
   auth,
