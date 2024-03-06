@@ -1,0 +1,128 @@
+.loginPage{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+.login{
+    min-height: 100vh;
+    background: linear-gradient(rgba(255, 255, 255, 0.1) 0%, rgb(0, 0, 0) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+    padding: 32px 0px;
+    margin-top: 10px;
+    background-color: #121212;
+    width: 500px;
+    height: 80vh;
+    gap: 30px;
+}
+.registerButtons{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.registerButtons button{
+    height: 35px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    border-radius: 50px;
+    font-weight: 700;
+    border: 1px solid #878787;
+    background-color: transparent;
+    width: 250px;
+}
+.registerButtons button svg{
+    font-size: 20px;
+}
+.registerButtons button span{
+    width: 160px;
+    text-align: left;
+}
+.facebook{
+    color: #005cff;
+    background-color: white;
+    border-radius: 50%;
+    border: 0;
+}
+.nextButton{
+    height: 35px;
+    background-color: #1ed760;
+    border-radius: 50px;
+    font-weight: 700;
+}
+.nextButton:hover{
+    background-color: #1fdf64;
+    cursor: pointer;
+}
+.nextButton:active{
+    background-color: #169c46;
+}
+.topSectionBorder{
+    width: 300px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+.topSectionBorder::before{
+    content: " ";
+    height: 1px;
+    background-color: #727272;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    right: 0px 
+}
+.topSectionBorder::after{
+    box-sizing: border-box;
+}
+.topSectionBorder span{
+    background-color: #121212;
+    padding: 0 12px;
+    font-size: 0.7em;
+    z-index: 9999;
+}
+.bottomBorder::before{
+    background-color: #292929;
+}
+.passwordForm{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 50%;
+}
+.email .eye{
+    position: absolute;
+    top: 56%;
+    left: 92%;
+}
+
+.inputs{
+    border: 1px solid #878787;
+    background-color: transparent;
+    height: 30px;
+    border-radius: 3px;
+    width: 100%;
+    color: #ffffff;
+}
+.inputs:active, .inputs:focus, .registerButtons button:hover{
+    border: 1px solid #fff;
+}
+.email{
+    width: 100%;
+    position: relative;
+}
+.email label{
+    font-size: 0.7em;
+    font-weight: 700;
+}

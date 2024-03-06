@@ -1,7 +1,7 @@
 .registerNav{
     display: flex;
     background-color: #121212;
-    width: 100vw;
+    width: 100%;
     padding: 30px;
     margin: 0;
 }

@@ -1,6 +1,6 @@
 import styles from "./MiniPlaylist.module.css";
 export default function MiniPlaylist({ playlist }) {
-  console.log(playlist);
+  // console.log(playlist);
   return (
     <div className={styles.playlist}>
       <div className={styles.playlistInfo}>
