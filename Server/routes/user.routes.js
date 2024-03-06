@@ -9,6 +9,7 @@ const {
   editUser,
   deleteUser,
   uploadPicture,
+  getUserByToken,
   searchUserByName,
 } = require("../controllers/user.Controller");
 const { auth } = require("../middlewares/auth");
@@ -25,6 +26,8 @@ router.patch("/:id", editUser);
 router.delete("/:id", deleteUser);
 
 router.get("/search/:name", searchUserByName);
+
+router.get("/user", getUserByToken);
 
 router.get("/init-user", auth, async (req, res) => {
   const user = req.user;

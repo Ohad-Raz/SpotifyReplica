@@ -1,5 +1,5 @@
 import styles from "./App.module.css";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
@@ -15,8 +15,16 @@ function About() {
 }
 
 function App() {
-  const logedUser = useContext(UserContext);
-  console.log(logedUser);
+  localStorage.setItem(
+    "token",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTVjZjgzNzdkOWRlNDA3Y2MyNDljMyIsImVtYWlsIjoib2hhZEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MDk3MjMyMzUsImV4cCI6MTcwOTgwOTYzNX0.AV1CxONuOxkNIESKROqwEITc-8zitVbZL4pq1Ue5bJ8"
+  );
+
+  const { logedUser } = useContext(UserContext);
+
+  // useEffect(() => {
+  //   console.log(logedUser);
+  // }, [logedUser]);
 
   return (
     <Router>
@@ -31,7 +39,9 @@ function App() {
           <Route path="/genre/:name" element={<GenreCard />} />
         </Routes>
       </main>
-      <div className={styles.musicPlayer}>{/* <SinglePreviewMethods/> */}</div>
+      <div className={styles.musicPlayer}>
+        <MusicPlayer />
+      </div>
     </Router>
   );
 }
