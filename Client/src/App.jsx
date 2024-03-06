@@ -1,20 +1,29 @@
 import styles from "./App.module.css";
+import { useContext, useEffect } from "react";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
 import Sider from "./components/Sider/Sider";
-<<<<<<< HEAD
 import SearchAlbums from "./pages/search/SearchAlbums.jsx";
 import { UserContext } from "./context/User.jsx";
 import GenreCard from "./components/genre/GenreCard.jsx";
-=======
->>>>>>> 600291e854ba188e15edfedcf63e1fac8e868c2b
 function About() {
   return <h1>About</h1>;
 }
 
 function App() {
+  localStorage.setItem(
+    "token",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTgzNDdhOGFhY2RmOGI3MDk4MzE4OSIsImVtYWlsIjoiYWRtaW5Ac3BvdGlmeS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTcwOTcxNjYwMywiZXhwIjoxNzA5ODAzMDAzfQ.aBgvGqqoEI7v4KOrLJY8J8dxVsQXTFXV9l6mOyjppiw"
+  );
+
+  const { logedUser } = useContext(UserContext);
+
+  // useEffect(() => {
+  //   console.log(logedUser);
+  // }, [logedUser]);
+
   return (
     <Router>
       <div className="aside">
@@ -24,6 +33,8 @@ function App() {
         <Routes>
           <Route path="/about" element={<About />} />
           <Route path="/" element={<Home />} />
+          <Route path="/search" element={<SearchAlbums />} />
+          <Route path="/genre/:name" element={<GenreCard />} />
         </Routes>
       </main>
       <div className={styles.musicPlayer}>

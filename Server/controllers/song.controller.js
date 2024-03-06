@@ -1,6 +1,9 @@
 const { Song } = require("../models/song.model");
 
 const { uploadToCloudinary } = require("../cloudiniryFloder/cloudinary");
+const { Album } = require("../models/album.model");
+const { Artist } = require("../models/artist.model");
+
 
 const createSong = async (req, res) => {
   const body = req.body;
@@ -10,11 +13,17 @@ const createSong = async (req, res) => {
     const newSong = new Song(body);
     await newSong.save();
 
-    await Song.findByIdAndUpdate(
-      Song,
+    await Album.findByIdAndUpdate(
+      newSong.album,
       { $push: { songs: newSong._id } },
       { new: true, upsert: true }
     );
+    await Artist.findByIdAndUpdate(
+      newSong.artist,
+      { $push: { songs: newSong._id } },
+      { new: true, upsert: true }
+    );
+    
     res.status(201).json(newSong);
   } catch (error) {
     console.error(error);
@@ -24,7 +33,7 @@ const createSong = async (req, res) => {
 
 const getAllSongs = async (req, res) => {
   try {
-    const songs = await Song.find();
+    const songs = await Song.find({});
     res.status(200).json({
       status: "success",
       data: {
@@ -111,7 +120,7 @@ const uploadAoudio = async (req, res) => {
   }
 };
 
- const uploadPicture = async (req, res) => {
+const uploadPicture = async (req, res) => {
   try {
     const data = await uploadToCloudinary(req.file.path, "post-images");
     await Song.updateOne(
@@ -129,7 +138,6 @@ const uploadAoudio = async (req, res) => {
     res.status(400).send(error);
   }
 };
-
 
 module.exports = {
   createSong,
