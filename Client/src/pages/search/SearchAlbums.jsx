@@ -31,11 +31,11 @@ export default function SearchAlbums() {
 
         <Link className="MerchCard GenreCard" to="/genre/Merch">
           Merch
-          <img src={musicImg} alt="" src="" />
+          <img src={musicImg} alt="" />
         </Link>
         <Link className="PopCard GenreCard" to="/genre/Pop">
           Pop
-          <img src={musicImg} alt="" src="" />
+          <img src={musicImg} alt="" />
         </Link>
         <Link className="Hip-HopCard GenreCard" to="/genre/Hip-Hop">
           Hip-Hop
@@ -69,85 +69,123 @@ export default function SearchAlbums() {
           Charts
           <img src="https://charts-images.scdn.co/assets/locale_en/regional/weekly/region_global_default.jpg" />
         </Link>
-        <Link className="madeForYouCard GenreCard" to="/genre/Music">
-          Made For You
-          <img src={musicImg} alt="" src="" />
+
+        <Link
+          className="DanceElectronicCard GenreCard"
+          to="/genre/Dance&Electronic"
+        >
+          Dance/Electronic
+          <img src="https://i.scdn.co/image/ab67fb8200005cafdfdaac1cf9574a196ca25196" />
+        </Link>
+        <Link className="MoodCard GenreCard" to="/genre/Mood">
+          Mood
+          <img src="https://i.scdn.co/image/ab67fb8200005caf271f9d895003c5f5561c1354" />
+        </Link>
+        <Link className="IndieCard GenreCard" to="/genre/Indie">
+          Indie
+          <img src="https://i.scdn.co/image/ab67fb8200005cafa1a252e3a815b65778d8c2aa" />
+        </Link>
+        <Link className="WorkoutCard GenreCard" to="/genre/Workout">
+          Workout
+          <img src="https://i.scdn.co/image/ab67706f000000029249b35f23fb596b6f006a15" />
+        </Link>
+        <Link className="DiscoverCard GenreCard" to="/genre/Discover">
+          Discover
+          <img src="https://t.scdn.co/images/d0fb2ab104dc4846bdc56d72b0b0d785.jpeg" />
+        </Link>
+
+        <Link className="CountryCard GenreCard" to="/genre/Country">
+          Country
+          <img src="https://i.scdn.co/image/ab67fb8200005cafc0d2222b4c6441930e1a386e" />
+        </Link>
+        <Link className="K-popCard GenreCard" to="/genre/K-pop">
+          K-pop
+          <img
+            src="https://i.scdn.co/image/ab67fb8200005caf013ee3c983e6f60bf28bad5a"
+            alt=""
+          />
+        </Link>
+        <Link className="mChillCard GenreCard" to="/genre/Chill">
+          Chill
+          <img
+            src="https://i.scdn.co/image/ab67fb8200005caf47e942f5bea637f4f4760170"
+            alt=""
+          />
+        </Link>
+        <Link className="SleepCard GenreCard" to="/genre/Sleep">
+          Sleep
+          <img
+            src="https://i.scdn.co/image/ab67706f00000002b70e0223f544b1faa2e95ed0"
+            alt=""
+          />
+        </Link>
+        <Link className="AtHomeCard GenreCard" to="/genre/At Home">
+          At Home
+          <img src={musicImg} alt="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" src="" />
+          <img src={musicImg} alt="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" src="" />
+          <img src={musicImg} alt="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" src="" />
+          <img src={musicImg} alt="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" src="" />
+          <img src={musicImg} alt="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" src="" />
+          <img src={musicImg} alt="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" src="" />
+          <img src={musicImg} alt="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" src="" />
+          <img src={musicImg} alt="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" src="" />
+          <img src={musicImg} alt="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" src="" />
+          <img src={musicImg} alt="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" src="" />
+          <img src={musicImg} alt="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" src="" />
+          <img src={musicImg} alt="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" src="" />
+          <img src={musicImg} alt="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" src="" />
+          <img src={musicImg} alt="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" src="" />
+          <img src={musicImg} alt="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" src="" />
+          <img src={musicImg} alt="" />
         </Link>
         <Link className="madeForYouCard GenreCard" to="/genre/Music">
           Made For You
-          <img src={musicImg} alt="" src="" />
-        </Link>
-        <Link className="madeForYouCard GenreCard" to="/genre/Music">
-          Made For You
-          <img src={musicImg} alt="" src="" />
-        </Link>
-        <Link className="madeForYouCard GenreCard" to="/genre/Music">
-          Made For You
-          <img src={musicImg} alt="" src="" />
-        </Link>
-        <Link className="madeForYouCard GenreCard" to="/genre/Music">
-          Made For You
-          <img src={musicImg} alt="" src="" />
+          <img src={musicImg} alt="" />
         </Link>
       </div>
     </div>

@@ -7,6 +7,7 @@ export const UserContext = createContext();
 export default function UserProvider({ children }) {
   const [inputData, setInputData] = useState({});
   const [logedUser, setLogedUser] = useState(null); // Changed initial state to null
+  const [token, setToken] = useState('');
 
   // console.log(apiUrl);
   useEffect(() => {
@@ -14,7 +15,7 @@ export default function UserProvider({ children }) {
       try {
         const token = localStorage.getItem("token");
         let URL = `${apiUrl}api/v1/users/user`;
-        console.log(URL);
+        // console.log(URL);
         if (token) {
           const res = await axios.get(URL, {
             headers: {
@@ -22,7 +23,7 @@ export default function UserProvider({ children }) {
             },
           });
 
-          console.log(res.data);
+          // console.log(res.data);
           if (res.data.status === "success") {
             setLogedUser(res.data.data.user); // Set the user obtained from token validation
           } else {
@@ -38,6 +39,14 @@ export default function UserProvider({ children }) {
 
     checkToken();
   }, []);
+
+  useEffect(() =>{
+    if(token == ''){
+        setToken(localStorage.getItem('token') ?? '');
+    } else{
+        localStorage.setItem('token', token);
+    }
+},[token]);
 
   const handleChange = (e) => {
     setInputData({ ...inputData, [e.target.name]: e.target.value });
@@ -55,7 +64,7 @@ export default function UserProvider({ children }) {
 
   return (
     <UserContext.Provider
-      value={{ handleChange, handleSubmit, logedUser, setLogedUser }}
+      value={{ handleChange, handleSubmit, logedUser, setLogedUser, setToken }}
     >
       {children}
     </UserContext.Provider>

@@ -1,0 +1,9 @@
+.regFooter{
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+}
+.regFooter p{
+    color: #6a6a6a;
+    font-size: 0.6em;
+}

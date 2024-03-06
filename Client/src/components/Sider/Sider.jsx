@@ -17,7 +17,8 @@ import dummyPlaylists from "../../dummy-data/playlist";
 
 export default function Sider() {
   const { logedUser } = useContext(UserContext);
-  logedUser && console.log(logedUser);
+  // logedUser && console.log(logedUser);
+
   const [playlists, setPlaylists] = useState(dummyPlaylists);
   const [showInput, setShowInput] = useState(false);
   const [inputValue, setInputValue] = useState("");
@@ -30,16 +31,31 @@ export default function Sider() {
   };
 
   const fetchPlaylists = () => {
+    const token = localStorage.getItem("token");
+    // console.log(token);
+    // console.log(logedUser);
     axios
-      .get(`${apiUrl}/api/v1/playlists/${logedUser.id}`)
+      .get(`${apiUrl}api/v1/playlists/users/${logedUser._id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((res) => {
-        setPlaylists(res.data.items);
+        console.log(res.data);
+        setPlaylists(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  const handleInputChange = (event) => {
+
+  useEffect(() => {
+    if (logedUser) {
+      fetchPlaylists();
+    }
+  }, [logedUser]);
+
+  const handleInputChange = async (event) => {
     setInputValue(event.target.value);
   };
 
@@ -53,7 +69,7 @@ export default function Sider() {
   };
 
   const filteredPlaylists = playlists.filter((playlist) => {
-    return playlist.name.toLowerCase().includes(inputValue.toLowerCase());
+    return playlist.title.toLowerCase().includes(inputValue.toLowerCase());
   });
 
   return (
