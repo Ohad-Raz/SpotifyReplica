@@ -4,7 +4,6 @@ const playlistController = require('../controllers/playlist.controller');
 const { auth, authorize } = require("../middlewares/auth");
 
 
-
 router.post('/',auth , playlistController.createPlaylist);
 router.get('/',auth, playlistController.getAllPlaylists);
 router.get('/:id',auth , playlistController.getPlaylistById);
