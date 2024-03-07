@@ -4,7 +4,6 @@ const { uploadToCloudinary } = require("../cloudiniryFloder/cloudinary");
 const { Album } = require("../models/album.model");
 const { Artist } = require("../models/artist.model");
 
-
 const createSong = async (req, res) => {
   const body = req.body;
 
@@ -23,7 +22,7 @@ const createSong = async (req, res) => {
       { $push: { songs: newSong._id } },
       { new: true, upsert: true }
     );
-    
+
     res.status(201).json(newSong);
   } catch (error) {
     console.error(error);
@@ -139,6 +138,18 @@ const uploadPicture = async (req, res) => {
   }
 };
 
+const getSongByGenreId = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const songs = await Song.find({ genre: id });
+    return res.send(songs);
+  } catch (error) {
+    console.log(error);
+    res.send("something wrong");
+  }
+};
+
 module.exports = {
   createSong,
   getAllSongs,
@@ -148,4 +159,5 @@ module.exports = {
   searchByName,
   uploadAoudio,
   uploadPicture,
+  getSongByGenreId,
 };

@@ -7,14 +7,14 @@ export const UserContext = createContext();
 export default function UserProvider({ children }) {
   const [inputData, setInputData] = useState({});
   const [logedUser, setLogedUser] = useState(null); // Changed initial state to null
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState("");
 
   // console.log(apiUrl);
   useEffect(() => {
     const checkToken = async () => {
       try {
         const token = localStorage.getItem("token");
-        let URL = `${apiUrl}api/v1/users/user`;
+        let URL = `${apiUrl}users/user`;
         // console.log(URL);
         if (token) {
           const res = await axios.get(URL, {
@@ -40,13 +40,13 @@ export default function UserProvider({ children }) {
     checkToken();
   }, []);
 
-  useEffect(() =>{
-    if(token == ''){
-        setToken(localStorage.getItem('token') ?? '');
-    } else{
-        localStorage.setItem('token', token);
+  useEffect(() => {
+    if (token == "") {
+      setToken(localStorage.getItem("token") ?? "");
+    } else {
+      localStorage.setItem("token", token);
     }
-},[token]);
+  }, [token]);
 
   const handleChange = (e) => {
     setInputData({ ...inputData, [e.target.name]: e.target.value });

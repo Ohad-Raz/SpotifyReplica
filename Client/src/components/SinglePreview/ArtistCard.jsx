@@ -9,7 +9,7 @@ const ArtistCard = () => {
     // Replace 'your-api-endpoint' with the actual endpoint of your API
     const fetchArtists = async () => {
       try {
-        const response = await fetch(`${apiUrl}api/v1/artists`);
+        const response = await fetch(`${apiUrl}artists`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

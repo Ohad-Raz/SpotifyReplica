@@ -12,18 +12,21 @@ const MediaContainer = () => {
     const fetchData = async () => {
       try {
         // Fetch songs
-        const songsResponse = await fetch(`${apiUrl}api/v1/songs`);
+        const songsResponse = await fetch(`${apiUrl}songs`);
         const songsData = await songsResponse.json();
-        setSongs(songsData);
+        // console.log("Songs:", songsData.data.songs); // Log the fetched songs data
+        setSongs(songsData.data.songs);
 
         // Fetch albums
-        const albumsResponse = await fetch(`${apiUrl}api/v1/albums`);
+        const albumsResponse = await fetch(`${apiUrl}albums`);
         const albumsData = await albumsResponse.json();
+        // console.log("Albums:", albumsData); // Log the fetched albums data
         setAlbums(albumsData);
 
         // Fetch playlists
-        const playlistsResponse = await fetch(`${apiUrl}api/v1/playlists`);
+        const playlistsResponse = await fetch(`${apiUrl}playlists`);
         const playlistsData = await playlistsResponse.json();
+        // console.log("Playlists:", playlistsData); // Log the fetched playlists data
         setPlaylists(playlistsData);
 
       } catch (error) {

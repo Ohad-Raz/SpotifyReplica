@@ -35,7 +35,7 @@ export default function Sider() {
     // console.log(token);
     // console.log(logedUser);
     axios
-      .get(`${apiUrl}api/v1/playlists/users/${logedUser._id}`, {
+      .get(`${apiUrl}playlists/users/${logedUser._id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
