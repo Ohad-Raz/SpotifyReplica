@@ -11,12 +11,18 @@ export default function GenreCard() {
   const fetchDataSongs = async () => {
     const res = await axios.get(`${apiUrl}songs/searchGenre/${name}`);
     const data = await res.data;
-
+    console.log(data);
     setSongsData(data);
+  };
+  const fetchAlbums = async () => {
+    const res = await axios.get(`${apiUrl}albums/?genre=${name}`);
+    const data = await res.data;
+    console.log(data);
   };
 
   useEffect(() => {
     fetchDataSongs();
+    fetchAlbums();
   }, []);
-  return <div>GenreCard</div>;
+  return <div className="containerGenreCard"></div>;
 }
