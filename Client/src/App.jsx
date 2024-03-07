@@ -13,14 +13,13 @@ import Register from "./components/Register/Register.jsx";
 import Login from "./components/Login/Login.jsx";
 
 import NavBar from "./components/navbar/NavBar.jsx";
-
+import ListSongsArtits from "./components/listSongsArtist/ListSongsArtits.jsx";
 import BottomSignup from "./components/MiniComponents/BottomSignup/BottomSignup.jsx";
-
 
 function App() {
   const { logedUser } = useContext(UserContext);
   const [isOnAuth, setIsOnAuth] = useState(false);
- console.log(logedUser);
+  console.log(logedUser);
   return (
     <Router>
       <div className={isOnAuth ? styles.none : "aside"}>
@@ -35,6 +34,8 @@ function App() {
           <Route path="/genre/:name" element={<GenreCard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+
+          <Route path="/listMusicArtist/:id" element={<ListSongsArtits />} />
         </Routes>
       </main>
 
@@ -45,7 +46,6 @@ function App() {
         {!logedUser ? (
           <BottomSignup setIsOnAuth={setIsOnAuth} />
         ) : (
-    
           <MusicPlayer />
         )}
       </div>
