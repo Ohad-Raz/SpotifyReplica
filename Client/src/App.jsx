@@ -37,8 +37,12 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchAlbums />} />
           <Route path="/genre/:name" element={<GenreCard />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          {!logedUser && (
+            <>
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </>
+          )}
         </Routes>
       </main>
 
