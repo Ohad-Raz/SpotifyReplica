@@ -1,0 +1,7 @@
+.headerListArtist {
+  display: flex;
+}
+.headerListArtist img {
+  width: 10vw;
+  height: 20vh;
+}

@@ -23,7 +23,7 @@ function Register() {
     password: "",
   });
 
-  const { setToken, setLogedUser, token, user } = useContext(UserContext);
+  const { setToken, setLogedUser, token, logedUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const togglePasswordType = () => {
@@ -52,10 +52,11 @@ function Register() {
         password: newUser.password,
       });
 
-      console.log(res.data.user);
-      console.log(res.data.token);
+      // console.log(res.data.user);
+      // console.log(res.data.token);
 
       localStorage.setItem('token', res.data.token);
+
       setToken(res.data.token);
       setLogedUser(res.data.user);
 
@@ -66,14 +67,14 @@ function Register() {
   };
 
   useEffect(() => {
-    console.log("User updated:", user);
+    console.log("User updated:", logedUser);
     console.log("Token updated:", token);
 
     // Redirect to root if user is logged in
-    if (user && token) {
+    if (logedUser && token) {
       navigate("/");
     }
-  }, [user, token, navigate]);
+  }, [logedUser, token]);
 
   return (
     <div className={styles.registerPage}>

@@ -29,7 +29,7 @@ export default function Home() {
       <div className="containerCards">
         {artists?.map((artist) => {
           return (
-            <NavLink to={`listMusic/${artist._id}`}>
+            <NavLink to={`listMusicArtist/${artist._id}`}>
               <ArtistCardHome artist={artist} />
             </NavLink>
           );

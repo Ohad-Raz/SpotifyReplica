@@ -28,6 +28,7 @@
   transform: translate(-50%, -50%);
   font-size: 2vw;
   color: green;
+
   display: none;
   margin: 0;
   transition: font-size 0.5s;

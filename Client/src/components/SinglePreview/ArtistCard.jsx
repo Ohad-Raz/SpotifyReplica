@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './ArtistCard.module.css';
 import { apiUrl } from '../../config/apiConfig';
+import { FaCirclePlay } from "react-icons/fa6";
 
 const ArtistCard = () => {
   const [artists, setArtists] = useState([]);
@@ -29,10 +30,17 @@ const ArtistCard = () => {
       {artists.map((artist) => (
         <div key={artist._id} className={styles.artistCard}>
           <div className={styles.artistImageContainer}>
-            <img src={artist.imageUrl} alt={artist.name} className={styles.artistImage} />
+            <div>
+         
+            <img src={artist.imageUrl} alt={artist.name}  className={styles.artistImage} />
+              <FaCirclePlay className={styles.playIcon} />
+              </div>
           </div>
+          <div className={styles.artistInfo}>
           <div className={styles.artistName}>{artist.name}</div>
-          <div className={styles.type}>Artist</div>
+          
+          <div className={styles.type}>Artist</div></div>
+     
 
         </div>
       ))}

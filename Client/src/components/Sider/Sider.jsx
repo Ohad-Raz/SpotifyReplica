@@ -41,7 +41,6 @@ export default function Sider() {
         },
       })
       .then((res) => {
-        console.log(res.data);
         setPlaylists(res.data);
       })
       .catch((err) => {
