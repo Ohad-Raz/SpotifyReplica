@@ -8,6 +8,8 @@
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .containerListArtist {
+  margin-left: 0.5rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -40,9 +42,57 @@
   gap: 2rem;
   margin-left: 1rem;
 }
-.headerTableHr {
+
+.playlist-container {
   display: flex;
-  padding: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  height: 150vh;
+}
+.playlist-header {
+  display: flex;
   justify-content: space-between;
+  padding-bottom: 10px;
   color: rgba(255, 255, 255, 0.542);
+  border-bottom: 1px solid #333;
+  margin-bottom: 10px;
+}
+.playlist-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 10px;
+}
+.playlist-item:last-child {
+  margin-bottom: 0;
+}
+.song-details {
+  display: flex;
+  align-items: center;
+}
+.song-cover {
+  width: 50px;
+  height: 50px;
+  background-color: #333;
+  margin-right: 10px;
+}
+.song-title {
+  flex-grow: 1;
+}
+.song-artist {
+  color: #aaa;
+}
+.song-added {
+  color: #aaa;
+}
+.play-icon {
+  color: #1db954;
+  cursor: pointer;
+}
+.song-info {
+  display: flex;
+  flex-direction: column;
+  width: 6vw;
+  margin-left: 2rem;
 }
