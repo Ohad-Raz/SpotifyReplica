@@ -5,7 +5,9 @@ const { Genre } = require("../models/genre.model");
 const getAlbums = async (req, res) => {
   try {
     const query = req.query;
-    const albums = await Album.find({ ...query }).populate({ path: "songs" });
+    const albums = await Album.find({ ...query })
+      .populate({ path: "songs" })
+      .populate({ path: "genre" });
     res.send({ status: "Got albums succesfully", data: albums });
   } catch (error) {
     res.status(400).send("Error");
