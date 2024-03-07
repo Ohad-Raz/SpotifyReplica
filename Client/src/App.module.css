@@ -89,7 +89,7 @@ main {
 }
 
 .none{
-  display: none;
+  display: none !important;
 }
 
 .authMain{
