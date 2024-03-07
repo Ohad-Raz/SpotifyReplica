@@ -45,6 +45,7 @@ function App() {
           <Route path="/register" element={<Register />} />
         </Routes>
         <NavBar setIsOnAuth={setIsOnAuth} logedUser={logedUser} />
+  
       </main>
 
       <div className={isOnAuth ? styles.none : styles.musicPlayer} />
@@ -54,6 +55,7 @@ function App() {
         {!logedUser ? (
           <BottomSignup setIsOnAuth={setIsOnAuth} />
         ) : (
+    
           <MusicPlayer />
         )}
       </div>
