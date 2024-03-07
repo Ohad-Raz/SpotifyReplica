@@ -5,14 +5,14 @@ import axios from "axios";
 import { apiUrl } from "../../config/apiConfig";
 
 export default function GenreCard() {
-  const [dataFetch, setDataFetch] = useState([]);
+  const [songsData, setSongsData] = useState([]);
   const { name } = useParams();
 
   const fetchDataSongs = async () => {
-    const res = axios.get(`${apiUrl}songs/searchGenre/${name}`);
+    const res = await axios.get(`${apiUrl}songs/searchGenre/${name}`);
     const data = await res.data;
-    console.log(data);
-    setDataFetch(data);
+
+    setSongsData(data);
   };
 
   useEffect(() => {
