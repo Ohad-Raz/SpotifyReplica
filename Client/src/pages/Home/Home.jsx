@@ -3,6 +3,7 @@ import ArtistCard from "../../components/SinglePreview/ArtistCard";
 import SongCard from "../../components/SinglePreview/SongCard";
 import styles from "./Home.module.css";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 import ArtistCardHome from "../../components/artistCardHome/ArtistCardHome";
 import { apiUrl } from "../../config/apiConfig";
 export default function Home() {
@@ -26,7 +27,11 @@ export default function Home() {
         <h1>Good morning</h1>
         <div className="containerCards">
           {artists?.map((artist) => {
-            return <ArtistCardHome artist={artist} />;
+            return (
+              <NavLink to={`listMusic/${artist._id}`}>
+                <ArtistCardHome artist={artist} />
+              </NavLink>
+            );
           })}
         </div>
       </div>
