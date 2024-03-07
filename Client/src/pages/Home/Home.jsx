@@ -13,6 +13,9 @@ export default function Home() {
     const res = await axios.get(`${apiUrl}artists`);
     const data = await res.data;
 
+    const handleClick = () => {
+      console.log("hello");
+    };
     setArtist(data);
   };
   useEffect(() => {
@@ -24,10 +27,10 @@ export default function Home() {
       </div>
       <h1>Good morning</h1>
       <div className="containerCards">
-        {artists?.map((artist) => {
-          return <ArtistCardHome artist={artist} />;
-        })}
-      </div>
+          {artists?.map((artist) => {
+            return <ArtistCardHome artist={artist} />;
+          })}
+        </div>
       <div><SinglePreview/> </div>
 
     </div>
