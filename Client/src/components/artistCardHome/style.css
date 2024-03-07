@@ -1,0 +1,45 @@
+.cardArtistHome {
+  width: 25vw;
+  display: flex;
+  background-color: hsla(0, 0%, 100%, 0.07);
+  align-items: center;
+  gap: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  overflow: hidden;
+  font-weight: bold;
+  position: relative;
+  transition: background-color 0.5s;
+}
+
+.cardArtistHome img {
+  width: 5vw;
+  height: 9vh;
+}
+
+.cardArtistHome p {
+  margin: 0;
+}
+
+.playIcon {
+  position: absolute;
+  top: 50%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+  font-size: 2vw;
+  color: green;
+  display: none;
+  margin: 0;
+  transition: font-size 0.5s;
+}
+
+.cardArtistHome:hover .playIcon {
+  display: flex;
+  width: 100%;
+}
+.playIcon:hover {
+  font-size: 2.5vw;
+}
+.cardArtistHome:hover {
+  background-color: hsla(0, 0%, 100%, 0.523);
+}

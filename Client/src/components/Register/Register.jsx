@@ -1,65 +1,80 @@
-import { useState, useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { apiUrl } from "../../config/apiConfig";
 import { UserContext } from "../../context/User";
 import RegisterNav from "../MiniComponents/RegisterNav/RegisterNav";
 import RegisterFooter from "../MiniComponents/RegisterFooter";
-import styles from "./Register.module.css";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa6";
 import { FaApple } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
+import styles from "./Register.module.css";
 
 function Register() {
   const [isRegister, setIsRegister] = useState(true);
   const [passwordHidden, setPasswordHidden] = useState("password");
   const [passwordIcon, setPasswordIcon] = useState(<FaRegEyeSlash />);
-  const [user, setUser] = useState({
+  const [newUser, setNewUser] = useState({
     email: "",
     username: "",
     password: "",
   });
-  const { setToken } = useContext(UserContext);
+
+  const { setToken, setLogedUser, token, user } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const togglePasswordType = () => {
-    if (passwordHidden === "password") {
-      setPasswordHidden === "text";
-      setPasswordIcon(<FaRegEye />);
-    } else if (passwordHidden === "text") {
-      setPasswordHidden("password");
-      setPasswordIcon(<FaRegEyeSlash />);
-    }
+    setPasswordHidden(passwordHidden === "password" ? "text" : "password");
+    setPasswordIcon(
+      passwordIcon === <FaRegEyeSlash /> ? <FaRegEye /> : <FaRegEyeSlash />
+    );
   };
 
   const handleInputChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    setNewUser({ ...newUser, [e.target.name]: e.target.value });
   };
 
   const handleEmailSubmit = (e) => {
     e.preventDefault();
     setIsRegister(false);
-    console.log({ user, isRegister });
+    console.log({ newUser, isRegister });
   };
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
       const res = await axios.post(`${apiUrl}users/register`, {
-        name: user.username,
-        email: user.email,
-        password: user.password,
+        name: newUser.username,
+        email: newUser.email,
+        password: newUser.password,
       });
-      setUser(res.data.user);
+
+      console.log(res.data.user);
+      console.log(res.data.token);
+
+      localStorage.setItem('token', res.data.token);
       setToken(res.data.token);
-      console.log("Register successful:", user);
-      window.location.href = "/";
+      setLogedUser(res.data.user);
+
+      console.log("Register successful:", newUser);
     } catch (error) {
       console.error("Failed to register:", error);
     }
   };
+
+  useEffect(() => {
+    console.log("User updated:", user);
+    console.log("Token updated:", token);
+
+    // Redirect to root if user is logged in
+    if (user && token) {
+      navigate("/");
+    }
+  }, [user, token, navigate]);
+
   return (
     <div className={styles.registerPage}>
       <RegisterNav />
@@ -118,7 +133,7 @@ function Register() {
               className={styles.arrowBtn}
               onClick={() => {
                 setIsRegister(true);
-                setUser({});
+                setNewUser({});
               }}
             >
               <IoIosArrowBack />
