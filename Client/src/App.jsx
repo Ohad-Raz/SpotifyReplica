@@ -28,7 +28,7 @@ function App() {
 
   const { logedUser } = useContext(UserContext);
   const [isOnAuth, setIsOnAuth] = useState(false);
-
+ console.log(logedUser);
   return (
     <Router>
       <div className={isOnAuth ? styles.none : "aside"}>
