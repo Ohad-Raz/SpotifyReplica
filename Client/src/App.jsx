@@ -1,6 +1,6 @@
 import styles from "./App.module.css";
-import { useContext, useState } from "react";
 
+import { useContext, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import SearchAlbums from "./pages/search/SearchAlbums";
@@ -9,9 +9,12 @@ import Sider from "./components/Sider/Sider";
 import { UserContext } from "./context/User.jsx";
 import GenreCard from "./components/genre/GenreCard.jsx";
 import Register from "./components/Register/Register.jsx";
+
 import Login from "./components/Login/Login.jsx";
 
 import NavBar from "./components/nabbar/NavBar.jsx";
+
+import BottomSignup from "./components/MiniComponents/BottomSignup/BottomSignup.jsx";
 
 function About() {
   return <h1> </h1>;
@@ -43,8 +46,16 @@ function App() {
         </Routes>
         <NavBar setIsOnAuth={setIsOnAuth} logedUser={logedUser} />
       </main>
+
+      <div className={isOnAuth ? styles.none : styles.musicPlayer} />
+      <MusicPlayer />
+
       <div className={isOnAuth ? styles.none : styles.musicPlayer}>
-        <MusicPlayer />
+        {!logedUser ? (
+          <BottomSignup setIsOnAuth={setIsOnAuth} />
+        ) : (
+          <MusicPlayer />
+        )}
       </div>
     </Router>
   );

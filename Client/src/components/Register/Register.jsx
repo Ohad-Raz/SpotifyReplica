@@ -1,4 +1,5 @@
 import {useState, useContext} from 'react'
+import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import { apiUrl } from '../../config/apiConfig';
 import { UserContext } from '../../context/User';
@@ -92,7 +93,7 @@ function Register() {
                     <div className={`${styles.topSectionBorder} ${styles.bottomBorder}`}>
                     </div>
                     <div className={styles.haveAnAccount}>
-                        <p>Have an account? <u>Go to your account</u>.</p>
+                        <p>Have an account? <u><NavLink to="/login">Go to your account</NavLink></u>.</p>
                     </div>
                 </section>
               </div>
