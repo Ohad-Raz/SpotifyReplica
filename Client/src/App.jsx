@@ -12,7 +12,7 @@ import Register from "./components/Register/Register.jsx";
 
 import Login from "./components/Login/Login.jsx";
 
-import NavBar from "./components/nabbar/NavBar.jsx";
+import NavBar from "./components/navbar/NavBar.jsx";
 
 import BottomSignup from "./components/MiniComponents/BottomSignup/BottomSignup.jsx";
 
@@ -35,6 +35,7 @@ function App() {
         <Sider />
       </div>
       <main className={isOnAuth ? styles.authMain : ""}>
+        <NavBar setIsOnAuth={setIsOnAuth} logedUser={logedUser} />
         <Routes>
           <Route path="/about" element={<About />} />
           <Route path="/" element={<Home />} />
@@ -44,7 +45,6 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
-        <NavBar setIsOnAuth={setIsOnAuth} logedUser={logedUser} />
       </main>
 
       <div className={isOnAuth ? styles.none : styles.musicPlayer} />
