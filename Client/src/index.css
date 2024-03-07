@@ -109,3 +109,18 @@ img {
   grid-area: nav;
   max-height: 84vh;
 }
+.containerArtistFields {
+  display: flex;
+  flex-direction: column;
+  min-width: 70vw;
+  margin-left: 1rem;
+
+  flex-wrap: wrap;
+}
+.containerCards {
+  display: flex;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+
+  gap: 2rem;
+}
