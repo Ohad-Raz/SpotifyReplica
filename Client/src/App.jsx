@@ -16,16 +16,8 @@ import NavBar from "./components/navbar/NavBar.jsx";
 
 import BottomSignup from "./components/MiniComponents/BottomSignup/BottomSignup.jsx";
 
-function About() {
-  return <h1> </h1>;
-}
 
 function App() {
-  localStorage.setItem(
-    "token",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTgzNDdhOGFhY2RmOGI3MDk4MzE4OSIsImVtYWlsIjoiYWRtaW5Ac3BvdGlmeS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTcwOTcxNjYwMywiZXhwIjoxNzA5ODAzMDAzfQ.aBgvGqqoEI7v4KOrLJY8J8dxVsQXTFXV9l6mOyjppiw"
-  );
-
   const { logedUser } = useContext(UserContext);
   const [isOnAuth, setIsOnAuth] = useState(false);
  console.log(logedUser);
@@ -37,7 +29,7 @@ function App() {
       <main className={isOnAuth ? styles.authMain : ""}>
         <NavBar setIsOnAuth={setIsOnAuth} logedUser={logedUser} />
         <Routes>
-          <Route path="/about" element={<About />} />
+          {/* <Route path="/about" element={<About />} /> */}
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchAlbums />} />
           <Route path="/genre/:name" element={<GenreCard />} />

@@ -64,7 +64,7 @@ export default function UserProvider({ children }) {
 
   return (
     <UserContext.Provider
-      value={{ handleChange, handleSubmit, logedUser, setLogedUser, setToken }}
+      value={{ handleChange, handleSubmit, logedUser, setLogedUser, setToken, token }}
     >
       {children}
     </UserContext.Provider>
