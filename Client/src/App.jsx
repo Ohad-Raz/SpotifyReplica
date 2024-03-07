@@ -1,11 +1,6 @@
 import styles from "./App.module.css";
-<<<<<<< HEAD
-import { useContext, useEffect } from "react";
+import { useContext, useState } from "react";
 
-=======
-import { useContext, useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
->>>>>>> 8343d3005a834f89eeb9633d5599e255a7eb9e6f
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import SearchAlbums from "./pages/search/SearchAlbums";
@@ -14,13 +9,12 @@ import Sider from "./components/Sider/Sider";
 import { UserContext } from "./context/User.jsx";
 import GenreCard from "./components/genre/GenreCard.jsx";
 import Register from "./components/Register/Register.jsx";
-import Login from "./components/Login/Login.jsx"
-import { MdOutlineDownloadForOffline } from "react-icons/md";
-import { IoIosNotificationsOutline } from "react-icons/io";
-import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import Login from "./components/Login/Login.jsx";
+
+import NavBar from "./components/nabbar/NavBar.jsx";
 
 function About() {
-  return <h1>About</h1>;
+  return <h1> </h1>;
 }
 
 function App() {
@@ -34,58 +28,23 @@ function App() {
 
   return (
     <Router>
-      <div className= {isOnAuth ? styles.none : 'aside'}>
-        <Sider/>
+      <div className={isOnAuth ? styles.none : "aside"}>
+        <Sider />
       </div>
-      <main className={isOnAuth ? styles.authMain : ''}>
+      <main className={isOnAuth ? styles.authMain : ""}>
         <Routes>
           <Route path="/about" element={<About />} />
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchAlbums />} />
-<<<<<<< HEAD
-
           <Route path="/genre/:name" element={<GenreCard />} />
-=======
+
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
->>>>>>> 8343d3005a834f89eeb9633d5599e255a7eb9e6f
         </Routes>
-        <header className={styles.header}>
-          {logedUser ? (
-            <>
-              <div className={styles.userMenu}>
-                <img
-                  className={styles.userIcon}
-                  src={logedUser.imageUrl}
-                  alt=""
-                />
-                <IoIosNotificationsOutline size={20} />
-                <div className={styles.installApp}>
-                  <MdOutlineDownloadForOffline size={20} />
-                  <p>Download the official app today</p>
-                </div>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className={styles.auth}>
-              <NavLink to="/login" className={styles.login} onClick={() => setIsOnAuth(true)}>Log In</NavLink>
-              <NavLink to="/register" className={styles.register} onClick={() => setIsOnAuth(true)}>Sign Up</NavLink>
-              </div>
-            </>
-          )}
-          <div className={styles.switch}>
-            <div>
-              <IoIosArrowBack />
-            </div>
-            <div>
-              <IoIosArrowForward />
-            </div>
-          </div>
-        </header>
+        <NavBar setIsOnAuth={setIsOnAuth} logedUser={logedUser} />
       </main>
-      <div className= {isOnAuth ? styles.none : styles.musicPlayer}>
-        <MusicPlayer/>
+      <div className={isOnAuth ? styles.none : styles.musicPlayer}>
+        <MusicPlayer />
       </div>
     </Router>
   );

@@ -8,88 +8,145 @@ export default function SearchAlbums() {
     <div className="containerSearch">
       <h2>Browse all</h2>
       <div className="cardGenres">
-        <Link className="musicCard GenreCard" to="/genre/Music">
+        <Link
+          className="musicCard GenreCard"
+          to="/genre/65e8594577fadefcf1f6c781"
+        >
           Music
           <img src={musicImg} />
         </Link>
-        <Link className="podcusCard GenreCard" to="/genre/Podcuts">
+        <Link
+          className="podcusCard GenreCard"
+          to="/genre/65e8595477fadefcf1f6c783"
+        >
           Podcuts
           <img src="https://i.scdn.co/image/ab6765630000ba8a81f07e1ead0317ee3c285bfa" />
         </Link>
-        <Link className="LiveCard GenreCard" to="/genre/Live Events">
+        <Link
+          className="LiveCard GenreCard"
+          to="/genre/65e859b577fadefcf1f6c785"
+        >
           Live Events
           <img src="https://concerts.spotifycdn.com/images/live-events_category-image.jpg" />
         </Link>
-        <Link className="madeForYouCard GenreCard" to="/genre/Made For You">
+        <Link
+          className="madeForYouCard GenreCard"
+          to="/genre/65e859bc77fadefcf1f6c787"
+        >
           Made For You
           <img src={musicImg} />
         </Link>
-        <Link className="ReleasesCard GenreCard" to="/genre/New Releases">
+        <Link
+          className="ReleasesCard GenreCard"
+          to="/genre/65e859c577fadefcf1f6c789"
+        >
           New Releases
           <img src="https://i.scdn.co/image/ab67706f000000027ea4d505212b9de1f72c5112" />
         </Link>
 
-        <Link className="MerchCard GenreCard" to="/genre/Merch">
+        <Link
+          className="MerchCard GenreCard"
+          to="/genre/65e859cd77fadefcf1f6c78b"
+        >
           Merch
           <img src={musicImg} alt="" />
         </Link>
-        <Link className="PopCard GenreCard" to="/genre/Pop">
+        <Link
+          className="PopCard GenreCard"
+          to="/genre/65e859d577fadefcf1f6c78d"
+        >
           Pop
           <img src={musicImg} alt="" />
         </Link>
-        <Link className="Hip-HopCard GenreCard" to="/genre/Hip-Hop">
+        <Link
+          className="Hip-HopCard GenreCard"
+          to="/genre/65e859dc77fadefcf1f6c78f"
+        >
           Hip-Hop
           <img src="https://i.scdn.co/image/ab67fb8200005caf9e3dea60be755ccd97b7351f" />
         </Link>
-        <Link className="RockCard GenreCard" to="/genre/Rock">
+        <Link
+          className="RockCard GenreCard"
+          to="/genre/65e859e277fadefcf1f6c791"
+        >
           Rock
           <img src={musicImg} />
         </Link>
-        <Link className="LatinCard GenreCard" to="/genre/Latin">
+        <Link
+          className="LatinCard GenreCard"
+          to="/genre/65e859e977fadefcf1f6c793"
+        >
           Latin
           <img src="https://i.scdn.co/image/ab67fb8200005cafa59f90c077c9f618fd0dde30" />
         </Link>
-        <Link className="ChartsCard GenreCard" to="/genre/Charts">
+        <Link
+          className="ChartsCard GenreCard"
+          to="/genre/65e859ef77fadefcf1f6c795"
+        >
           Podcast Charts
           <img src="https://t.scdn.co/images/7262179db37c498480ef06bfacb60310.jpeg" />
         </Link>
-        <Link className="EducationalCard GenreCard" to="/genre/Educational">
+        <Link
+          className="EducationalCard GenreCard"
+          to="/genre/65e859f577fadefcf1f6c797"
+        >
           Educational
           <img src="https://i.scdn.co/image/ab67656300005f1fd464f18a416c86ede3a235a7" />
         </Link>
-        <Link className="DocumentaryCard GenreCard" to="/genre/Documentary">
+        <Link
+          className="DocumentaryCard GenreCard"
+          to="/genre/65e859fe77fadefcf1f6c799"
+        >
           Documentary
           <img src="https://i.scdn.co/image/ab6765630000ba8a2f514cde3ee9501e7ada4cf4" />
         </Link>
-        <Link className="ComedyCard GenreCard" to="/genre/Comedy">
+        <Link
+          className="ComedyCard GenreCard"
+          to="/genre/65e85a0577fadefcf1f6c79b"
+        >
           Comedy
           <img src="https://i.scdn.co/image/ab6765630000ba8a77d267a5accb8911a92668e1" />
         </Link>
-        <Link className="Charts2Card GenreCard" to="/genre/Charts">
+        <Link
+          className="Charts2Card GenreCard"
+          to="/genre/65e85a0b77fadefcf1f6c79d"
+        >
           Charts
           <img src="https://charts-images.scdn.co/assets/locale_en/regional/weekly/region_global_default.jpg" />
         </Link>
 
         <Link
           className="DanceElectronicCard GenreCard"
-          to="/genre/Dance&Electronic"
+          to="/genre/65e85a1277fadefcf1f6c79f"
         >
           Dance/Electronic
           <img src="https://i.scdn.co/image/ab67fb8200005cafdfdaac1cf9574a196ca25196" />
         </Link>
-        <Link className="MoodCard GenreCard" to="/genre/Mood">
+        <Link
+          className="MoodCard GenreCard"
+          to="/genre/65e85a1877fadefcf1f6c7a1"
+        >
           Mood
           <img src="https://i.scdn.co/image/ab67fb8200005caf271f9d895003c5f5561c1354" />
         </Link>
-        <Link className="IndieCard GenreCard" to="/genre/Indie">
+        <Link
+          className="IndieCard GenreCard"
+          to="/genre/65e85a1d77fadefcf1f6c7a3"
+        >
           Indie
           <img src="https://i.scdn.co/image/ab67fb8200005cafa1a252e3a815b65778d8c2aa" />
         </Link>
-        <Link className="WorkoutCard GenreCard" to="/genre/Workout">
+        <Link
+          className="WorkoutCard GenreCard"
+          to="/genre/65e85a2477fadefcf1f6c7a5"
+        >
           Workout
           <img src="https://i.scdn.co/image/ab67706f000000029249b35f23fb596b6f006a15" />
         </Link>
-        <Link className="DiscoverCard GenreCard" to="/genre/Discover">
+        <Link
+          className="DiscoverCard GenreCard"
+          to="/genre/65e85a2977fadefcf1f6c7a7"
+        >
           Discover
           <img src="https://t.scdn.co/images/d0fb2ab104dc4846bdc56d72b0b0d785.jpeg" />
         </Link>
