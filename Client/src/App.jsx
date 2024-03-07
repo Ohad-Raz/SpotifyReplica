@@ -32,7 +32,7 @@ function App() {
         <Sider />
       </div>
       <main className={isOnAuth ? styles.authMain : ""}>
-        <NavBar setIsOnAuth={setIsOnAuth} logedUser={logedUser} />
+        {!isOnAuth ? <NavBar setIsOnAuth={setIsOnAuth} logedUser={logedUser}/> : null}
         <Routes>
           {/* <Route path="/about" element={<About />} /> */}
           <Route path="/" element={<Home />} />
@@ -52,9 +52,6 @@ function App() {
           )}
         </Routes>
       </main>
-
-      <div className={isOnAuth ? styles.none : styles.musicPlayer} />
-      <MusicPlayer />
 
       <div className={isOnAuth ? styles.none : styles.musicPlayer}>
         {!logedUser ? (
