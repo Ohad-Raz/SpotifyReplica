@@ -1,13 +1,68 @@
-.cardsContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1rem;
-  justify-content: center;
-  padding: 1rem;
+.cardsContainer{
+  display: flex;
 }
 
-@media (max-width: 768px) {
-  .cardsContainer {
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  }
+.mediaCard {
+  display: flex;
+  flex-direction: column;
+  background-color: #181818;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 15rem; /* 240px */
+  margin: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.mediaCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.mediaImageContainer {
+  width: 100%;
+  padding-top: 100%; /* This maintains a 1:1 aspect ratio */
+  position: relative;
+}
+
+.mediaImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mediaInfo {
+  padding: 0.5rem;
+  color: white;
+}
+
+.mediaTitle {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+}
+
+.mediaYear {
+  font-size: 0.875rem;
+  color: #b3b3b3;
+}
+
+
+
+
+/* containers */
+
+/* artist */
+.artistsContainer{
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+/* song */
+
+
+
+

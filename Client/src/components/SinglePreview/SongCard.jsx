@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from './MediaCard.module.css';
+import styles from './SongCard.module.css';
 import { apiUrl } from '../../config/apiConfig';
 
 const SongCard = () => {
@@ -23,7 +23,7 @@ const SongCard = () => {
   }, []);
 
   return (
-    <div>
+    <div className={styles.songContainer}>
       {songs.map((song) => (
         <div key={song._id} className={styles.songCard}>
           <div className={styles.songImageContainer}>

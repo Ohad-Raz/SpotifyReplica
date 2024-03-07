@@ -25,7 +25,7 @@ const ArtistCard = () => {
 
   // If you want to display all artists, map through the state variable
   return (
-    <div>
+    <div className={styles.Container}>
       {artists.map((artist) => (
         <div key={artist._id} className={styles.artistCard}>
           <div className={styles.artistImageContainer}>
