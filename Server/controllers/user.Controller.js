@@ -35,29 +35,36 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
+  console.log(req.body);
   try {
-    const body = await req.body;
-    const userFound = await User.findOne({
-      email: body.email,
-    });
+    const { email, password } = req.body;
 
-    if (userFound) {
-      const isMatch = await bcryptjs.compare(body.password, userFound.password);
+    const userFound = await User.findOne({ email }).select("+password");
 
-      if (isMatch) {
-        const token = genrateToken({
-          id: userFound._id,
-          email: userFound.email,
-          role: userFound.role,
-        });
-        return res.send({ userFound, token });
-      } else return res.status(401).send("email or password are incorrect");
+    console.log(userFound);
+    if (!userFound) {
+      return res.status(401).send("User not found. Please register.");
+    }
+
+    const isMatch = await bcryptjs.compare(password, userFound.password);
+
+    if (isMatch) {
+      // Create a new object without the password field
+      const { password: _, ...userWithoutPassword } = userFound.toObject();
+
+      const token = genrateToken({
+        id: userFound._id,
+        email: userFound.email,
+        role: userFound.role,
+      });
+
+      return res.send({ user: userWithoutPassword, token });
     } else {
-      return res.send("not such user please register");
+      return res.status(401).send("Email or password is incorrect");
     }
   } catch (error) {
     console.log(error);
-    res.send("something wrong");
+    res.status(500).send("Something went wrong");
   }
 };
 

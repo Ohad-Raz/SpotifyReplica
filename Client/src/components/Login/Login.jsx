@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { apiUrl } from "../../config/apiConfig";
 import { UserContext } from "../../context/User";
@@ -18,7 +18,7 @@ function Login() {
     email: "",
     password: "",
   });
-  const { setToken } = useContext(UserContext);
+  const { setToken, setLogedUser } = useContext(UserContext);
 
   const togglePasswordType = () => {
     if (passwordHidden === "password") {
@@ -33,6 +33,7 @@ function Login() {
   const handleInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -40,14 +41,21 @@ function Login() {
         email: user.email,
         password: user.password,
       });
-      setUser(res.data.userFound);
-      setToken(res.data.token);
-      console.log("Logged in successfully:", res.data.userFound);
-      window.location.href = "/";
+
+      console.log(res.data);
+
+      // setUser(res.data.userFound);
+
+      localStorage.setItem('token', res.data.token);
+      setLogedUser(res.data.user);
+      console.log("Logged in successfully:", res.data.user);
+      // window.location.href = "/";
     } catch (error) {
       console.error("Failed to login:", error);
     }
   };
+
+
   return (
     <div className={styles.loginPage}>
       <RegisterNav />

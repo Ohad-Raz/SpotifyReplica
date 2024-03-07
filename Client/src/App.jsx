@@ -19,7 +19,15 @@ import BottomSignup from "./components/MiniComponents/BottomSignup/BottomSignup.
 function App() {
   const { logedUser } = useContext(UserContext);
   const [isOnAuth, setIsOnAuth] = useState(false);
+<<<<<<< HEAD
   console.log(logedUser);
+=======
+  
+  useEffect(() => {
+    console.log(logedUser ? logedUser : 'No user logged in');
+  },[logedUser])
+
+>>>>>>> df05f3f7984398b2d8fd66880f1c0b9e19a3bb6f
   return (
     <Router>
       <div className={isOnAuth ? styles.none : "aside"}>
@@ -32,10 +40,19 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchAlbums />} />
           <Route path="/genre/:name" element={<GenreCard />} />
+<<<<<<< HEAD
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
           <Route path="/listMusicArtist/:id" element={<ListSongsArtits />} />
+=======
+          {!logedUser && (
+            <>
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </>
+          )}
+>>>>>>> df05f3f7984398b2d8fd66880f1c0b9e19a3bb6f
         </Routes>
       </main>
 
