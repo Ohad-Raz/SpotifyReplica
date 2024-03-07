@@ -24,6 +24,7 @@ export default function Home() {
   }, []);
   return (
     <div className={styles.container}>
+      <div>
     <div className="containerArtistFields">
       <h1>Good morning</h1>
       <div className="containerCards">
@@ -35,11 +36,13 @@ export default function Home() {
           );
         })}
       </div>
-      <div>
+     <div>
+      
+     </div>
    <SinglePreview/>
    </div>
     </div>
-  
+   
   </div>
 
   );

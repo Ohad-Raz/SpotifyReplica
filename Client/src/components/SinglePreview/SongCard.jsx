@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './SongCard.module.css';
 import { apiUrl } from '../../config/apiConfig';
+import { FaCirclePlay } from "react-icons/fa6";
 
 const SongCard = () => {
   const [songs, setSongs] = useState([]);
@@ -28,6 +29,8 @@ const SongCard = () => {
         <div key={song._id} className={styles.songCard}>
           <div className={styles.songImageContainer}>
             <img src={song.imageUrl} alt={song.title} className={styles.songImage} />
+            <FaCirclePlay className={styles.playIcon} />
+
           </div>
           <div className={styles.songTitle}>{song.title}</div>
           <div className={styles.songReleaseDate}>
