@@ -20,7 +20,11 @@ import BottomSignup from "./components/MiniComponents/BottomSignup/BottomSignup.
 function App() {
   const { logedUser } = useContext(UserContext);
   const [isOnAuth, setIsOnAuth] = useState(false);
- console.log(logedUser);
+  
+  useEffect(() => {
+    console.log(logedUser ? logedUser : 'No user logged in');
+  },[logedUser])
+
   return (
     <Router>
       <div className={isOnAuth ? styles.none : "aside"}>
