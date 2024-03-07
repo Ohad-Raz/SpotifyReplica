@@ -1,21 +1,23 @@
 .cardsContainer{
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  /* justify-content: flex-start; */
 }
 
 .mediaCard {
   display: flex;
   flex-direction: column;
-  background-color: #181818;
-  border-radius: 8px;
-  overflow: hidden;
-  width: 15rem; /* 240px */
+  /* background-color: #181818;
+  border-radius: 8px; */
+  /* width: 15rem;  */
   margin: 1rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
 }
 
 .mediaCard:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  /* transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5); */
 }
 
 .mediaImageContainer {

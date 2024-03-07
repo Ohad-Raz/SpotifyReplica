@@ -24,20 +24,23 @@ export default function Home() {
   }, []);
   return (
     <div className={styles.container}>
-      <div>
-      </div>
+    <div className="containerArtistFields">
       <h1>Good morning</h1>
       <div className="containerCards">
-          {artists?.map((artist) => {
-            return (
-              <NavLink to={`listMusic/${artist._id}`}>
-                <ArtistCardHome artist={artist} />
-              </NavLink>
-            );
-          })}
-        </div>
-      <div><SinglePreview/> </div>
-
+        {artists?.map((artist) => {
+          return (
+            <NavLink to={`listMusic/${artist._id}`}>
+              <ArtistCardHome artist={artist} />
+            </NavLink>
+          );
+        })}
+      </div>
+      <div>
+   <SinglePreview/>
+   </div>
     </div>
+  
+  </div>
+
   );
 }
