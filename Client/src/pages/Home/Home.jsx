@@ -7,6 +7,9 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import ArtistCardHome from "../../components/artistCardHome/ArtistCardHome";
 import { apiUrl } from "../../config/apiConfig";
+import { FaCirclePlay } from "react-icons/fa6";
+import imgLike from "../../assets/likedsongs.png";
+
 export default function Home() {
   const [artists, setArtist] = useState([]);
 
@@ -14,9 +17,6 @@ export default function Home() {
     const res = await axios.get(`${apiUrl}artists`);
     const data = await res.data;
 
-    const handleClick = () => {
-      console.log("hello");
-    };
     setArtist(data);
   };
   useEffect(() => {
@@ -25,25 +25,28 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <div>
-    <div className="containerArtistFields">
-      <h1>Good morning</h1>
-      <div className="containerCards">
-        {artists?.map((artist) => {
-          return (
-            <NavLink to={`listMusicArtist/${artist._id}`}>
-              <ArtistCardHome artist={artist} />
+        <div className="containerArtistFields">
+          <h1>Good morning</h1>
+          <div className="containerCards">
+            <NavLink to="/likes" className="likesContainer">
+              <div className="cardArtistHome">
+                <img src={imgLike} alt="Favorites" />
+                <p>Liked Songs</p>
+                <FaCirclePlay className="playIcon" />
+              </div>
             </NavLink>
-          );
-        })}
+            {artists?.map((artist) => {
+              return (
+                <NavLink to={`listMusicArtist/${artist._id}`}>
+                  <ArtistCardHome artist={artist} />
+                </NavLink>
+              );
+            })}
+          </div>
+          <div></div>
+          <SinglePreview />
+        </div>
       </div>
-     <div>
-      
-     </div>
-   <SinglePreview/>
-   </div>
     </div>
-   
-  </div>
-
   );
 }

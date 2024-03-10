@@ -15,6 +15,7 @@ import Login from "./components/Login/Login.jsx";
 import NavBar from "./components/navbar/NavBar.jsx";
 import ListSongsArtits from "./components/listSongsArtist/ListSongsArtits.jsx";
 import BottomSignup from "./components/MiniComponents/BottomSignup/BottomSignup.jsx";
+import LikesList from "./components/LikesList/LikesList.jsx";
 
 function App() {
   const { logedUser } = useContext(UserContext);
@@ -32,7 +33,9 @@ function App() {
         <Sider />
       </div>
       <main className={isOnAuth ? styles.authMain : ""}>
-        {!isOnAuth ? <NavBar setIsOnAuth={setIsOnAuth} logedUser={logedUser}/> : null}
+        {!isOnAuth ? (
+          <NavBar setIsOnAuth={setIsOnAuth} logedUser={logedUser} />
+        ) : null}
         <Routes>
           {/* <Route path="/about" element={<About />} /> */}
           <Route path="/" element={<Home />} />
@@ -41,7 +44,7 @@ function App() {
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-
+          <Route path="/likes" element={<LikesList />} />
           <Route path="/listMusicArtist/:id" element={<ListSongsArtits />} />
 
           {!logedUser && (
