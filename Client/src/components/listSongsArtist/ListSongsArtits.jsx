@@ -6,7 +6,6 @@ import { FaCirclePlay } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa6";
 import { SlOptions } from "react-icons/sl";
 import { CiCircleList } from "react-icons/ci";
-import { MdAccessTime } from "react-icons/md";
 
 import "./style.css";
 export default function ListSongsArtits() {
@@ -39,23 +38,6 @@ export default function ListSongsArtits() {
         <CiCircleList />
       </div>
 
-      {/* <ol>
-        {artistData?.songs?.map((song,index) => {
-          return <div className="playlist-item">
-        <div className="song-number">{index}</div>
-          <div className="song-details">
-            <div className="song-cover"></div>
-            <div className="song-info">
-              <div className="song-title">{song.title}</div>
-              <div className="song-artist">{artistData?.name}</div>
-            </div>
-          </div>
-          <div className="song-album">{artistData?.albums[0]?.title}</div>
-          <div className="song-added">3 weeks ago</div>
-          <div className="play-icon">▶</div>
-          </div>;
-        })}
-      </ol> */}
       <div class="playlist-container">
         <div class="playlist-header">
           <div>#</div>
@@ -65,19 +47,6 @@ export default function ListSongsArtits() {
           <div></div>
         </div>
 
-        {/* <div className="playlist-item">
-          <div className="song-number">1</div>
-          <div className="song-details">
-            <div className="song-cover"></div>
-            <div className="song-info">
-              <div className="song-title">King Without a Crown</div>
-              <div className="song-artist">Matisyahu</div>
-            </div>
-          </div>
-          <div className="song-album">Youth</div>
-          <div className="song-added">3 weeks ago</div>
-          <div className="play-icon">▶</div>
-        </div> */}
         {artistData?.songs?.map((song, index) => {
           return (
             <div className="playlist-item">
@@ -93,7 +62,9 @@ export default function ListSongsArtits() {
               </div>
               <div className="song-album">{artistData?.albums[0]?.title}</div>
               <div className="song-added">3 weeks ago</div>
-              <div className="play-icon">▶</div>
+              <div className="play-icon">
+                <FaHeart className="heartLike" />▶
+              </div>
             </div>
           );
         })}

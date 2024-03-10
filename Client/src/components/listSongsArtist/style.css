@@ -2,17 +2,24 @@
   display: flex;
   border-radius: 0.3rem;
   padding: 2rem;
+
+  margin-bottom: 2rem;
+
   background: linear-gradient(135deg, #00f0ff 0%, #000840 100%);
 
   gap: 1rem;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
 .containerListArtist {
   margin-left: 0.5rem;
+
+  height: 100vh;
   padding: 1rem;
+
   display: flex;
   flex-direction: column;
-  height: 100vh;
+
   overflow-x: scroll;
   background-color: #131313;
 }
@@ -27,7 +34,7 @@
   padding: 1rem;
 
   justify-content: space-between;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 .containerIcons svg {
   cursor: pointer;
@@ -40,15 +47,13 @@
 .threeIcons {
   display: flex;
   gap: 2rem;
+
   margin-left: 1rem;
 }
-
 .playlist-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 150vh;
+  display: block;
 }
+
 .playlist-header {
   display: flex;
   justify-content: space-between;
@@ -61,8 +66,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  padding: 0.5rem;
   margin-bottom: 10px;
+}
+.playlist-item:hover {
+  background-color: rgba(255, 255, 255, 0.211);
+  border-radius: 0.5rem;
 }
 .playlist-item:last-child {
   margin-bottom: 0;
@@ -70,12 +79,19 @@
 .song-details {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 .song-cover {
-  width: 50px;
-  height: 50px;
-  background-color: #333;
+  width: 2rem;
+  height: 2rem;
+
   margin-right: 10px;
+}
+.song-cover img {
+  width: 100%;
+  border-radius: 0.5rem;
+
+  height: 100%;
 }
 .song-title {
   flex-grow: 1;
@@ -89,10 +105,26 @@
 .play-icon {
   color: #1db954;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.heartLike {
+  color: #aaa;
+  cursor: pointer;
+}
+.heartLike:hover {
+  color: #19ab4c;
 }
 .song-info {
   display: flex;
   flex-direction: column;
   width: 6vw;
   margin-left: 2rem;
+}
+.containerSongList {
+  display: flex;
+  flex-direction: column;
+  overflow-x: scroll;
+  height: 100vh;
 }
