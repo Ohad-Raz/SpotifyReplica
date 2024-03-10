@@ -15,7 +15,7 @@ const PlaylistCard = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        setPlaylists(data); // Adjusted to match the expected API response structure
+        setPlaylists(data.slice(0, 9)); // Adjusted to match the expected API response structure
       } catch (error) {
         console.error('Fetching playlists failed:', error);
       }

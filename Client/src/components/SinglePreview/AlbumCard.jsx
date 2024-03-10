@@ -15,7 +15,7 @@ const AlbumCard = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        setAlbums(data.data); // Assuming your API directly returns an array of albums
+        setAlbums(data.data.slice(0, 9)); // Assuming your API directly returns an array of albums
       } catch (error) {
         console.error('Fetching albums failed: ', error);
       }

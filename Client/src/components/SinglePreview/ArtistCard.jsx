@@ -15,7 +15,7 @@ const ArtistCard = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        setArtists(data);
+        setArtists(data.slice(0, 9));
       } catch (error) {
         console.error('Fetching artists failed: ', error);
       }
