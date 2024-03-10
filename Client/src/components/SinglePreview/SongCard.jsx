@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import styles from './MediaCard.module.css';
-import { apiUrl } from '../../config/apiConfig';
+import React, { useState, useEffect } from "react";
+import styles from "./MediaCard.module.css";
+import { apiUrl } from "../../config/apiConfig";
 import { FaCirclePlay } from "react-icons/fa6";
 
 const SongCard = () => {
@@ -14,9 +14,14 @@ const SongCard = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        setSongs(data.data.songs);
+        const limitedData = [];
+        for (let i = 0; i <= 7; i++) {
+          limitedData.push(data.data.songs[i]);
+        }
+
+        setSongs(limitedData);
       } catch (error) {
-        console.error('Fetching songs failed: ', error);
+        console.error("Fetching songs failed: ", error);
       }
     };
 
@@ -28,9 +33,12 @@ const SongCard = () => {
       {songs.map((song) => (
         <div key={song._id} className={styles.mediaCard}>
           <div className={styles.mediaImageContainer}>
-            <img src={song.imageUrl} alt={song.title} className={styles.mediaImage} />
+            <img
+              src={song.imageUrl}
+              alt={song.title}
+              className={styles.mediaImage}
+            />
             <FaCirclePlay className={styles.playIcon} />
-
           </div>
           <div className={styles.mediaTitle}>{song.title}</div>
           <div className={styles.mediaReleaseDate}>
