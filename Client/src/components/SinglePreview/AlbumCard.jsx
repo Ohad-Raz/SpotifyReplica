@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import styles from './MediaCard.module.css';
+import { useState, useEffect, useContext } from "react";
+import styles from "./MediaCard.module.css";
+import { AudioContext } from "../../context/AudioContext";
 
-import { apiUrl } from '../../config/apiConfig';
+import { apiUrl } from "../../config/apiConfig";
 import { FaCirclePlay } from "react-icons/fa6";
 
 const AlbumCard = () => {
+  const { setCurrentPlaylist } = useContext(AudioContext);
+
   const [albums, setAlbums] = useState([]);
 
+  const setPlaylist = (playlist) => setCurrentPlaylist(playlist.songs);
   useEffect(() => {
     const fetchAlbums = async () => {
       try {
@@ -17,7 +21,7 @@ const AlbumCard = () => {
         const data = await response.json();
         setAlbums(data.data.slice(0, 9)); // Assuming your API directly returns an array of albums
       } catch (error) {
-        console.error('Fetching albums failed: ', error);
+        console.error("Fetching albums failed: ", error);
       }
     };
 
@@ -27,9 +31,17 @@ const AlbumCard = () => {
   return (
     <div className={styles.mediaContainer}>
       {albums.map((album) => (
-        <div key={album._id} className={styles.mediaCard}>
+        <div
+          key={album._id}
+          className={styles.mediaCard}
+          onClick={() => setPlaylist(album)}
+        >
           <div className={styles.mediaImageContainer}>
-            <img src={album.imageUrl} alt={album.title} className={styles.mediaImage} />
+            <img
+              src={album.imageUrl}
+              alt={album.title}
+              className={styles.mediaImage}
+            />
             <FaCirclePlay className={styles.playIcon} />
           </div>
           <div className={styles.mediaTitle}>{album.title}</div>

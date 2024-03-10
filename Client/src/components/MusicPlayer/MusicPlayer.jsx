@@ -61,10 +61,17 @@ export default function MusicPlayer() {
   };
 
   useEffect(() => {
-    console.log(currentAudio);
+    // console.log(currentAudio);
     audioRef.current?.play();
     setPlay(true);
   }, [currentAudio]);
+
+  useEffect(() => {
+    if (currentPlaylist?.length > 0) {
+      // console.log("test");
+      setCurrentAudio(currentPlaylist[0]);
+    }
+  }, [currentPlaylist]);
 
   useEffect(() => {
     console.log(audioHistory);

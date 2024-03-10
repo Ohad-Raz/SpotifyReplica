@@ -1,81 +1,109 @@
 import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
 
 import { apiUrl } from "../../config/apiConfig";
-import { FaCirclePlay } from "react-icons/fa6";
-import { FaHeart } from "react-icons/fa6";
+import { FaPlay, FaHeart } from "react-icons/fa";
 import { SlOptions } from "react-icons/sl";
 import { CiCircleList } from "react-icons/ci";
 import imgLikes from "../../assets/likedsongs.png";
 import "./style.css";
 import { UserContext } from "../../context/User";
-import axios from "axios";
+import { AudioContext } from "../../context/AudioContext";
 
 export default function LikesList() {
+  const { setCurrentAudio } = useContext(AudioContext);
   const { logedUser } = useContext(UserContext);
   const [likesSongs, setLikesSongs] = useState([]);
 
-  const fetchSongsCurrentUser = async () => {
-    const res = await axios.get(`${apiUrl}likes/${logedUser._id}`);
-    const data = await res.data;
-
-    const songs = data.data.map((like) => {
-      return like.song_id;
-    });
-    console.log(songs);
-    setLikesSongs(songs);
+  // Handle playing a song
+  const handleSongClick = (song) => {
+    setCurrentAudio(song);
   };
+
+  // Handle liking a song
+  const handleClickLike = async (id) => {
+    try {
+      await axios.post(`${apiUrl}likes/${id}`, {
+        type: "song",
+        user_id: logedUser._id,
+      });
+
+      // Update the liked state of the song if necessary
+      setLikesSongs((prevLikes) =>
+        prevLikes.map((song) =>
+          song._id === id ? { ...song, liked: true } : song
+        )
+      );
+    } catch (error) {
+      console.error("Error liking the song:", error);
+    }
+  };
+
   useEffect(() => {
+    // Fetch liked songs of the current user
+    const fetchSongsCurrentUser = async () => {
+      try {
+        const res = await axios.get(`${apiUrl}likes/${logedUser?._id}`);
+        const data = await res.data;
+
+        setLikesSongs(data.data);
+      } catch (error) {
+        console.error("Error fetching liked songs:", error);
+      }
+    };
+
     fetchSongsCurrentUser();
-  }, []);
+  }, [logedUser?._id]);
+
   return (
-    <div>
-      <div className="containerListArtist ">
-        <div className="HeaderLikes headerListArtist">
-          <img src={imgLikes} />
-          <div>
-            <span>Playlist</span>
-            <h2>Liked Songs</h2>
-          </div>
+    <div className="containerListArtist">
+      <div className="HeaderLikes headerListArtist">
+        <img src={imgLikes} alt="Liked Songs" />
+        <div>
+          <span>Playlist</span>
+          <h2>Liked Songs</h2>
         </div>
-        <div className="containerIcons">
-          <div className="threeIcons">
-            <FaCirclePlay />
-            <FaHeart />
-            <SlOptions />
-          </div>
-          <CiCircleList />
+      </div>
+      <div className="containerIcons">
+        <div className="threeIcons">
+          <FaPlay />
+          <FaHeart />
+          <SlOptions />
         </div>
-
-        <div class="playlist-container">
-          <div class="playlist-header">
-            <div>#</div>
-            <div>Title</div>
-            <div>Album</div>
-            <div>Date added</div>
-            <div></div>
-          </div>
-
-          {likesSongs?.map((song, index) => {
-            return (
-              <div className="playlist-item">
-                <div className="song-number">{index}</div>
-                <div className="song-details">
-                  <div className="song-cover">
-                    <img src={song.imageUrl}></img>
-                  </div>
-                  <div className="song-info">
-                    <div className="song-title">{song.title}</div>
-                  </div>
-                </div>
-                <div className="song-album">{song.title}</div>
-                <div className="song-added">3 weeks ago</div>
-                <div className="play-icon">
-                  <FaHeart className="heartLike" />▶
-                </div>
+        <CiCircleList />
+      </div>
+      <div className="playlist-container">
+        <div className="playlist-header">
+          <div>#</div>
+          <div>Title</div>
+          <div>Album</div>
+          <div>Date added</div>
+          <div></div>
+        </div>
+        {likesSongs.map((song, index) => (
+          <div className="playlist-item" key={index}>
+            <div className="song-number">{index + 1}</div>
+            <div className="song-details">
+              <div className="song-cover">
+                <img src={song.imageUrl} alt="Song Cover" />
               </div>
-            );
-          })}
-        </div>
+              <div className="song-info">
+                <div className="song-title">{song.title}</div>
+              </div>
+            </div>
+            <div className="song-album">{song.album}</div>
+            <div className="song-added">3 weeks ago</div>
+            <div className="play-icon">
+              <FaHeart
+                className="heartLike"
+                onClick={() => handleClickLike(song._id)}
+              />
+              <span className="play-icon" onClick={() => handleSongClick(song)}>
+                ▶
+              </span>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

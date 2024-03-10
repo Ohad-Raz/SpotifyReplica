@@ -37,7 +37,7 @@ export default function Home() {
             </NavLink>
             {artists?.map((artist) => {
               return (
-                <NavLink to={`listMusicArtist/${artist._id}`}>
+                <NavLink to={`listMusicArtist/${artist._id}`} key={artist.id}>
                   <ArtistCardHome artist={artist} />
                 </NavLink>
               );
