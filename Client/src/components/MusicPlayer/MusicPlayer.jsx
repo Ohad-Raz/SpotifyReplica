@@ -1,5 +1,5 @@
 import styles from "./MusicPlayer.module.css";
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { FaExpandAlt } from "react-icons/fa";
 import { CgMiniPlayer } from "react-icons/cg";
 import { CiVolumeHigh } from "react-icons/ci";
@@ -19,6 +19,7 @@ export default function MusicPlayer() {
   const [play, setPlay] = useState(false);
   const audioRef = useRef(null);
   function toggleAudio() {
+    console.log(currentAudio.audioUrl);
     if (play) {
       audioRef.current?.pause();
       setPlay(false);
@@ -27,6 +28,14 @@ export default function MusicPlayer() {
       setPlay(true);
     }
   }
+
+  useEffect(() => {
+    console.log(currentAudio);
+    toggleAudio();
+    // console.log(currentAudio.audioUrl);
+  }, [currentAudio]);
+
+  // console.log(currentPlaylist);
 
   return (
     <div className={styles.musicPlayer}>
@@ -65,7 +74,7 @@ export default function MusicPlayer() {
           alt="Album Cover"
         />
       </div>
-      <audio ref={audioRef} loop src={currentAudio} />
+      <audio ref={audioRef} loop src={currentAudio.audioUrl} />
     </div>
   );
 }

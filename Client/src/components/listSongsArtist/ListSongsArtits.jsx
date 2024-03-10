@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { apiUrl } from "../../config/apiConfig";
 import { FaCirclePlay } from "react-icons/fa6";
@@ -7,19 +7,29 @@ import { FaHeart } from "react-icons/fa6";
 import { SlOptions } from "react-icons/sl";
 import { CiCircleList } from "react-icons/ci";
 
+import { AudioContext } from "../../context/AudioContext";
+
 import "./style.css";
 export default function ListSongsArtits() {
+  const { setCurrentPlaylist, setCurrentAudio } = useContext(AudioContext);
+
   const { id } = useParams();
   const [artistData, setArtistData] = useState([]);
+  const setSong = (index) => {
+    setCurrentAudio(artistData.songs[index]);
+  };
+
   const fethcDataArtist = async () => {
     const res = await axios.get(`${apiUrl}artists/${id}`);
     const data = await res.data;
     setArtistData(data);
-    console.log(data);
+    setCurrentPlaylist(data.songs);
   };
+
   useEffect(() => {
     fethcDataArtist();
   }, []);
+
   return (
     <div className="containerListArtist">
       <div className="headerListArtist">
@@ -38,8 +48,8 @@ export default function ListSongsArtits() {
         <CiCircleList />
       </div>
 
-      <div class="playlist-container">
-        <div class="playlist-header">
+      <div className="playlist-container">
+        <div className="playlist-header">
           <div>#</div>
           <div>Title</div>
           <div>Album</div>
@@ -49,8 +59,8 @@ export default function ListSongsArtits() {
 
         {artistData?.songs?.map((song, index) => {
           return (
-            <div className="playlist-item">
-              <div className="song-number">{index}</div>
+            <div className="playlist-item" key={`playList${index}`}>
+              <div className="song-number">{index + 1}</div>
               <div className="song-details">
                 <div className="song-cover">
                   <img src={song.imageUrl}></img>
@@ -62,7 +72,7 @@ export default function ListSongsArtits() {
               </div>
               <div className="song-album">{artistData?.albums[0]?.title}</div>
               <div className="song-added">3 weeks ago</div>
-              <div className="play-icon">
+              <div className="play-icon" onClick={() => setSong(index)}>
                 <FaHeart className="heartLike" />▶
               </div>
             </div>
