@@ -21,6 +21,7 @@ export default function ListSongsArtits() {
   const { id } = useParams();
   const [artistData, setArtistData] = useState([]);
   const setSong = (index) => {
+    console.log(artistData.songs[index]);
     setCurrentAudio(artistData.songs[index]);
   };
 
@@ -88,11 +89,15 @@ export default function ListSongsArtits() {
               <div className="play-icon">
                 <FaHeart
                   className="heartLike"
-                  onClick={() => handleClickLike(song._id)}
+                  onClick={() => {
+                    handleClickLike(song._id);
+                  }}
                 />
-                ▶
-                <div className="play-icon" onClick={() => setSong(index)} />
-                <FaHeart className="heartLike" />▶
+
+                <span className="play-icon" onClick={() => setSong(index)}>
+                  {" "}
+                  ▶{" "}
+                </span>
               </div>
             </div>
           );

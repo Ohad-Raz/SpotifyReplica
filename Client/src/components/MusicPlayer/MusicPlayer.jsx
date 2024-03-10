@@ -15,6 +15,7 @@ import { FaHeart } from "react-icons/fa";
 
 import { AudioContext } from "../../context/AudioContext";
 export default function MusicPlayer() {
+  const [volume, setVolume] = useState(0.5); // Initial volume set to 0.5
   const [audioHistory, setAudioHistory] = useState([]);
   const { currentAudio, currentPlaylist, setCurrentAudio } =
     useContext(AudioContext);
@@ -53,6 +54,12 @@ export default function MusicPlayer() {
     }
   };
 
+  const handleVolumeChange = (event) => {
+    const newVolume = event.target.value;
+    setVolume(newVolume);
+    audioRef.current.volume = newVolume;
+  };
+
   useEffect(() => {
     console.log(currentAudio);
     audioRef.current?.play();
@@ -70,7 +77,14 @@ export default function MusicPlayer() {
         <FaExpandAlt />
         <CgMiniPlayer />
         <CiVolumeHigh />
-        <input type="range" />
+        <input
+          type="range"
+          min="0.0"
+          max="1.0"
+          step="0.01" // Optional: Define step size for smoother volume adjustments
+          value={volume}
+          onChange={handleVolumeChange} // Call the event handler on volume change
+        />
         <MdOutlineSpeakerGroup />
         <GiHamburgerMenu />
         <BsFillMusicPlayerFill />
@@ -96,12 +110,12 @@ export default function MusicPlayer() {
       <div className={styles.currentSong}>
         <FaHeart />
         <div className={styles.songInfo}>
-          <h2>SONG NAME</h2>
-          <p>SONG ARTIST</p>
+          <h2>{currentAudio.title}</h2>
+          <p>{currentAudio.artist}</p>
         </div>
         <img
           className={styles.albumCover}
-          src="https://upload.wikimedia.org/wikipedia/en/4/45/Divide_cover.png"
+          src={currentAudio.imageUrl}
           alt="Album Cover"
         />
       </div>
