@@ -110,8 +110,8 @@ export default function MusicPlayer() {
       <div className={styles.currentSong}>
         <FaHeart />
         <div className={styles.songInfo}>
-          <h2>{currentAudio.title}</h2>
-          <p>{currentAudio.artist}</p>
+          <h2>{currentAudio?.title}</h2>
+          <p>{currentAudio?.artist}</p>
         </div>
         <img
           className={styles.albumCover}
