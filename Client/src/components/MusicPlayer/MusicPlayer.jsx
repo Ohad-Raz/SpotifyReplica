@@ -115,7 +115,7 @@ export default function MusicPlayer() {
         </div>
         <img
           className={styles.albumCover}
-          src={currentAudio.imageUrl}
+          src={currentAudio?.imageUrl}
           alt="Album Cover"
         />
       </div>
