@@ -42,3 +42,9 @@
 .albumCover {
   width: 7vw;
 }
+
+.playToggle {
+  cursor: pointer;
+  width: 5vw;
+  color: white;
+}
