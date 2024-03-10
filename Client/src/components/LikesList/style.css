@@ -1,3 +1,6 @@
-.headerListArtist {
-  background: linear-gradient(135deg, #ed7b84 #9055ff 100%);
+.HeaderLikes {
+  background: rgb(80, 56, 160);
+
+  gap: 1rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

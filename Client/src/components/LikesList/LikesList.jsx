@@ -1,5 +1,5 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+
 import { apiUrl } from "../../config/apiConfig";
 import { FaCirclePlay } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa6";
@@ -7,12 +7,30 @@ import { SlOptions } from "react-icons/sl";
 import { CiCircleList } from "react-icons/ci";
 import imgLikes from "../../assets/likedsongs.png";
 import "./style.css";
+import { UserContext } from "../../context/User";
+import axios from "axios";
 
 export default function LikesList() {
+  const { logedUser } = useContext(UserContext);
+  const [likesSongs, setLikesSongs] = useState([]);
+
+  const fetchSongsCurrentUser = async () => {
+    const res = await axios.get(`${apiUrl}likes/${logedUser._id}`);
+    const data = await res.data;
+
+    const songs = data.data.map((like) => {
+      return like.song_id;
+    });
+    console.log(songs);
+    setLikesSongs(songs);
+  };
+  useEffect(() => {
+    fetchSongsCurrentUser();
+  }, []);
   return (
     <div>
-      <div className="containerListArtist">
-        <div className="headerListArtist">
+      <div className="containerListArtist ">
+        <div className="HeaderLikes headerListArtist">
           <img src={imgLikes} />
           <div>
             <span>Playlist</span>
@@ -37,7 +55,7 @@ export default function LikesList() {
             <div></div>
           </div>
 
-          {/* {artistData?.songs?.map((song, index) => {
+          {likesSongs?.map((song, index) => {
             return (
               <div className="playlist-item">
                 <div className="song-number">{index}</div>
@@ -47,17 +65,16 @@ export default function LikesList() {
                   </div>
                   <div className="song-info">
                     <div className="song-title">{song.title}</div>
-                    <div className="song-artist">{artistData?.name}</div>
                   </div>
                 </div>
-                <div className="song-album">{artistData?.albums[0]?.title}</div>
+                <div className="song-album">{song.title}</div>
                 <div className="song-added">3 weeks ago</div>
                 <div className="play-icon">
                   <FaHeart className="heartLike" />▶
                 </div>
               </div>
             );
-          })} */}
+          })}
         </div>
       </div>
     </div>

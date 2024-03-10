@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { UserContext } from "../../context/User";
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { apiUrl } from "../../config/apiConfig";
 import { FaCirclePlay } from "react-icons/fa6";
@@ -9,6 +11,7 @@ import { CiCircleList } from "react-icons/ci";
 
 import "./style.css";
 export default function ListSongsArtits() {
+  const { logedUser } = useContext(UserContext);
   const { id } = useParams();
   const [artistData, setArtistData] = useState([]);
   const fethcDataArtist = async () => {
@@ -16,6 +19,13 @@ export default function ListSongsArtits() {
     const data = await res.data;
     setArtistData(data);
     console.log(data);
+  };
+
+  const handleClickLike = async (id) => {
+    await axios.post(`${apiUrl}likes/${id}`, {
+      type: "song",
+      user_id: logedUser._id,
+    });
   };
   useEffect(() => {
     fethcDataArtist();
@@ -63,7 +73,11 @@ export default function ListSongsArtits() {
               <div className="song-album">{artistData?.albums[0]?.title}</div>
               <div className="song-added">3 weeks ago</div>
               <div className="play-icon">
-                <FaHeart className="heartLike" />▶
+                <FaHeart
+                  className="heartLike"
+                  onClick={() => handleClickLike(song._id)}
+                />
+                ▶
               </div>
             </div>
           );
