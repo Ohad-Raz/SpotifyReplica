@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from './SongCard.module.css';
+import styles from './MediaCard.module.css';
 import { apiUrl } from '../../config/apiConfig';
 import { FaCirclePlay } from "react-icons/fa6";
 
@@ -24,16 +24,16 @@ const SongCard = () => {
   }, []);
 
   return (
-    <div className={styles.songContainer}>
+    <div className={styles.mediaContainer}>
       {songs.map((song) => (
-        <div key={song._id} className={styles.songCard}>
-          <div className={styles.songImageContainer}>
-            <img src={song.imageUrl} alt={song.title} className={styles.songImage} />
+        <div key={song._id} className={styles.mediaCard}>
+          <div className={styles.mediaImageContainer}>
+            <img src={song.imageUrl} alt={song.title} className={styles.mediaImage} />
             <FaCirclePlay className={styles.playIcon} />
 
           </div>
-          <div className={styles.songTitle}>{song.title}</div>
-          <div className={styles.songReleaseDate}>
+          <div className={styles.mediaTitle}>{song.title}</div>
+          <div className={styles.mediaReleaseDate}>
             {new Date(song.release_date).getFullYear()}
           </div>
         </div>

@@ -1,5 +1,5 @@
 
-.songContainer {
+.mediaContainer {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -8,7 +8,7 @@
 
 }
 
-.songCard {
+.mediaCard {
   display: flex;
   flex-direction: column;
   /* background-color: #181818; */
@@ -23,12 +23,12 @@
   
 }
 
-.songCard:hover {
+.mediaCard:hover {
   /* transform: scale(1.00); */
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
 }
 
-.songImageContainer {
+.mediaImageContainer {
   width: 100%;
   padding-top: 100%; /* This maintains a 1:1 aspect ratio */
   position: relative;
@@ -36,7 +36,7 @@
   
 }
 
-.songImage {
+.mediaImage {
   position: absolute;
   top: 0;
   left: 0;
@@ -62,31 +62,31 @@
   transition: font-size 0.5s;
 }
 
-.songCard:hover .playIcon {
+.mediaCard:hover .playIcon {
   display: flex;
   width: 100%;
 }
 .playIcon:hover {
   font-size: 4vw;
 }
-.songCard:hover {
+.mediaCard:hover {
   background-color: hsla(0, 0%, 100%, 0.300);
 
 }
 
 
-.songInfo {
+.mediaInfo {
   padding: 0.5rem;
   color: white;
 }
 
-.songTitle {
+.mediaTitle {
   font-size: 1rem;
   margin-bottom: 0.3rem;
   font-weight: bold;
 }
 
-.songReleaseDate {
+.mediaReleaseDate {
   font-size: 0.875rem;
   color: #b3b3b3;
 }

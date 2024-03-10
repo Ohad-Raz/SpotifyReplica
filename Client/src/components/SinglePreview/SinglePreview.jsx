@@ -11,6 +11,14 @@ const SinglePreview = () => {
   return (
     <div className={styles.cardsContainer}>
 
+
+<div  className={styles.Card }>
+          <h2>Albums</h2>
+          <div className={styles.mediaCard } >
+          <AlbumCard  />
+        </div>
+        </div>
+
         <div className={styles.Card }>
           <h2>Artists</h2>
           <div className={styles.mediaCard }
@@ -19,12 +27,11 @@ const SinglePreview = () => {
         </div>
         </div>
     
-        {/* <div  className={styles.Card }>
-          <h2>Albums</h2>
-          <div className={styles.mediaCard } >
-          <AlbumCard  />
+        <div className={styles.Card }>
+          <h2>Playlists</h2>
+
+          <PlaylistCard className={styles.mediaCard } />
         </div>
-        </div> */}
 
         <div className={styles.Card }>
           <h2>Songs</h2>
@@ -32,11 +39,7 @@ const SinglePreview = () => {
           <SongCard className={styles.mediaCard } />
         </div>
 
-        {/* <div className={styles.Card }>
-          <h2>Playlists</h2>
 
-          <PlaylistCard className={styles.mediaCard } />
-        </div> */}
   
     </div>
   );
