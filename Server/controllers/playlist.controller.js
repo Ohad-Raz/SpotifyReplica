@@ -54,12 +54,10 @@ exports.deletePlaylist = async (req, res) => {
   try {
     const playlistId = req.params.id;
 
-    const playlist = await Playlist.findById(playlistId);
+    const playlist = await Playlist.findByIdAndDelete(playlistId);
     if (!playlist) {
       return res.status(404).json({ message: "Playlist not found" });
     }
-
-    await playlist.remove();
 
     res.json({ message: "Playlist deleted successfully" });
   } catch (error) {
@@ -105,14 +103,24 @@ exports.removeSongFromPlaylist = async (req, res) => {
       return res.status(404).json({ message: "Playlist not found" });
     }
 
+    if (!playlist.songs.includes(songId)) {
+      return res
+        .status(400)
+        .json({ message: "Song does not exist in the playlist" });
+    }
+
     playlist.songs = playlist.songs.filter(
       (song) => song.toString() !== songId
     );
+
     await playlist.save();
 
-    res.json(playlist);
+    res.json({
+      status: "success",
+      message: "Song removed from the playlist",
+    });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ status: "error", message: error.message });
   }
 };
 
