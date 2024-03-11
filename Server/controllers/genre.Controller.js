@@ -1,15 +1,16 @@
 const { Genre } = require("../models/genre.model");
 
 const addGenre = async (req, res) => {
-  const body = await req.body;
-
   try {
-    const genre = new Genre(body);
-    genre.save();
-    return res.send(genre);
+    let { name } = req.body;
+    name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+
+    const genre = new Genre({ name });
+    await genre.save();
+    return res.status(201).json({ status: "success", data: genre });
   } catch (error) {
-    console.log(error);
-    res.send("something wrong");
+    console.error(error);
+    return res.status(500).json({ status: "error", message: error.message });
   }
 };
 
