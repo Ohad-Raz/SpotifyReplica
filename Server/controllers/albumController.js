@@ -26,6 +26,9 @@ const getSingleAlbum = async (req, res) => {
 };
 
 const addNewAlbum = async (req, res) => {
+  //! FISTUK: it is not recommended to put direct body from
+  //! req as potential undesired data might be uploaded,
+  //!  we have to define the exact field to recive from the body.
   const body = req.body;
 
   try {
@@ -37,6 +40,7 @@ const addNewAlbum = async (req, res) => {
       { $push: { albums: newAlbum._id } },
       { new: true, upsert: true }
     );
+
     await Genre.findByIdAndUpdate(
       newAlbum.genre_id,
       { $push: { albums: newAlbum._id } },

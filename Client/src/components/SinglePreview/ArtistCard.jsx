@@ -3,17 +3,18 @@ import styles from "./ArtistCard.module.css";
 import { apiUrl } from "../../config/apiConfig";
 import { FaCirclePlay } from "react-icons/fa6";
 import { AudioContext } from "../../context/AudioContext";
+import { useNavigate } from "react-router-dom";
 
 const ArtistCard = () => {
+  const navigate = useNavigate();
   const { setCurrentPlaylist } = useContext(AudioContext);
-
   const [artists, setArtists] = useState([]);
   const setPlaylist = (playlist) => {
-    // console.log(playlist);
     setCurrentPlaylist(playlist.songs);
+    navigate(`/listMusicArtist/${playlist._id}`);
   };
+
   useEffect(() => {
-    // Replace 'your-api-endpoint' with the actual endpoint of your API
     const fetchArtists = async () => {
       try {
         const response = await fetch(`${apiUrl}artists`);
@@ -30,7 +31,6 @@ const ArtistCard = () => {
     fetchArtists();
   }, []);
 
-  // If you want to display all artists, map through the state variable
   return (
     <div className={styles.Container}>
       {artists.map((artist) => (

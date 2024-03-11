@@ -73,9 +73,9 @@ export default function MusicPlayer() {
     }
   }, [currentPlaylist]);
 
-  useEffect(() => {
-    console.log(audioHistory);
-  }, [audioHistory]);
+  // useEffect(() => {
+  //   console.log(audioHistory);
+  // }, [audioHistory]);
   // console.log(currentPlaylist);
 
   return (
