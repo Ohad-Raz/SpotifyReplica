@@ -37,10 +37,10 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   try {
     const { email, password } = req.body;
-
+    console.log(email);
     const userFound = await User.findOne({ email }).select("+password");
 
     console.log(userFound);
@@ -54,7 +54,7 @@ const login = async (req, res) => {
       // Create a new object without the password field
       const { password: _, ...userWithoutPassword } = userFound.toObject();
 
-      const token = genrateToken({
+      const token = generateToken({
         id: userFound._id,
         email: userFound.email,
         role: userFound.role,
@@ -98,13 +98,30 @@ const getUserById = async (req, res) => {
 
 const editUser = async (req, res) => {
   try {
-    const body = await req.body;
     const { id } = req.params;
-    const user = await User.findByIdAndUpdate(id, body);
+    const { name, email } = req.body;
+
+    const updates = {};
+    if (name) updates.name = name;
+    if (email) {
+      // Check for duplicate email if email is being updated
+      const userDuplicateEmail = await User.findOne({ email });
+      if (userDuplicateEmail && userDuplicateEmail._id != id) {
+        return res
+          .status(400)
+          .json({ status: "error", error: "Email is already registered" });
+      }
+      updates.email = email;
+    }
+
+    const user = await User.findByIdAndUpdate(id, updates, { new: true });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
     return res.send(user);
   } catch (error) {
     console.log(error);
-    res.send("something wrong");
+    res.status(500).json({ message: "Internal server error" });
   }
 };
 
