@@ -32,7 +32,7 @@ const createSong = async (req, res) => {
 
 const getAllSongs = async (req, res) => {
   try {
-    const songs = await Song.find({});
+    const songs = await Song.find({}).populate("album");
     res.status(200).json({
       status: "success",
       data: {
@@ -45,10 +45,13 @@ const getAllSongs = async (req, res) => {
 };
 
 const getSongById = async (req, res) => {
+  const { id } = req.params;
+
   try {
-    const song = await Song.findById(req.params.id).populate(
-      "user album genre"
-    );
+    const song = await Song.findById(id)
+      .populate("user")
+      .populate("album")
+      .populate("genre");
     if (!song) {
       return res.status(404).json({ message: "Song not found" });
     }

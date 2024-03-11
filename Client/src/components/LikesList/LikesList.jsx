@@ -14,6 +14,7 @@ export default function LikesList() {
   const { setCurrentAudio } = useContext(AudioContext);
   const { logedUser } = useContext(UserContext);
   const [likesSongs, setLikesSongs] = useState([]);
+  const [albumImg, setAlbumImg] = useState([]);
 
   // Handle playing a song
   const handleSongClick = (song) => {
@@ -45,8 +46,21 @@ export default function LikesList() {
       try {
         const res = await axios.get(`${apiUrl}likes/${logedUser?._id}`);
         const data = await res.data;
+        console.log(data.data);
 
         setLikesSongs(data.data);
+
+        const imageALbumsSongs = data.data.map(async (song) => {
+          const resAlbum = await axios.get(
+            `${apiUrl}songs/${song.song_id._id}`
+          );
+          const dataAlbum = await resAlbum.data;
+          return dataAlbum.imageUrl;
+        });
+
+        Promise.all(imageALbumsSongs).then((albumImages) => {
+          setAlbumImg([...albumImg, albumImages]);
+        });
       } catch (error) {
         console.error("Error fetching liked songs:", error);
       }
@@ -55,6 +69,7 @@ export default function LikesList() {
     fetchSongsCurrentUser();
   }, [logedUser?._id]);
 
+  console.log(albumImg?.[0]);
   return (
     <div className="containerListArtist">
       <div className="HeaderLikes headerListArtist">
@@ -85,7 +100,10 @@ export default function LikesList() {
             <div className="song-number">{index + 1}</div>
             <div className="song-details">
               <div className="song-cover">
-                <img src={song.imageUrl} alt="Song Cover" />
+                <img
+                  src={albumImg?.[index] ? albumImg?.[index] : imgLikes}
+                  alt="Song Cover"
+                />
               </div>
               <div className="song-info">
                 <div className="song-title">{song.title}</div>

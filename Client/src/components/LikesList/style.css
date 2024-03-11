@@ -4,3 +4,8 @@
   gap: 1rem;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+.playlist-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14rem;
+}
