@@ -8,6 +8,7 @@
 
 .mediaCard {
   display: flex;
+  cursor: pointer;
   flex-direction: column;
   /* background-color: #181818; */
   background-color: #1b1b1b;
@@ -83,3 +84,5 @@
   font-size: 0.875rem;
   color: #b3b3b3;
 }
+
+/* song */

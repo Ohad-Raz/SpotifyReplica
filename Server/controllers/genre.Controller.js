@@ -13,6 +13,17 @@ const addGenre = async (req, res) => {
     return res.status(500).json({ status: "error", message: error.message });
   }
 };
+const getGenreById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const genre = await Genre.findById(id).populate("albums").populate("songs");
+
+    return res.send(genre);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
 const getGenres = async (req, res) => {
   try {
@@ -50,4 +61,10 @@ const searchByName = async (req, res) => {
   }
 };
 
-module.exports = { deleteGenre, getGenres, addGenre, searchByName };
+module.exports = {
+  deleteGenre,
+  getGenres,
+  addGenre,
+  searchByName,
+  getGenreById,
+};

@@ -28,7 +28,11 @@ export default function Home() {
         <div className="containerArtistFields">
           <h1>Good morning</h1>
           <div className="containerCards">
-            <NavLink to="/likes" className="likesContainer" key={Math.random()*10}>
+            <NavLink
+              to="/likes"
+              className="likesContainer"
+              key={Math.random() * 10}
+            >
               <div className="cardArtistHome">
                 <img src={imgLike} alt="Favorites" />
                 <p>Liked Songs</p>

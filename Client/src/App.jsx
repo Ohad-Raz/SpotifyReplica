@@ -40,7 +40,7 @@ function App() {
           {/* <Route path="/about" element={<About />} /> */}
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchAlbums />} />
-          <Route path="/genre/:name" element={<GenreCard />} />
+          <Route path="/genre/:id/:name" element={<GenreCard />} />
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

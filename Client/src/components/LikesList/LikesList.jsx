@@ -69,7 +69,6 @@ export default function LikesList() {
     fetchSongsCurrentUser();
   }, [logedUser?._id]);
 
-  console.log(albumImg?.[0]);
   return (
     <div className="containerListArtist">
       <div className="HeaderLikes headerListArtist">
