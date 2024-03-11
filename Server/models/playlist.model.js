@@ -5,6 +5,7 @@ const playlistSchema = new Schema({
   title: {
     type: String,
     required: true,
+    unique: true,
   },
   description: String,
   user: {
@@ -25,5 +26,4 @@ const playlistSchema = new Schema({
 });
 
 const Playlist = mongoose.model("Playlist", playlistSchema);
-
 module.exports = Playlist;

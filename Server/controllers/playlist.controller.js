@@ -9,7 +9,7 @@ exports.createPlaylist = async (req, res) => {
       return res.status(401).json({ message: "User not authenticated" });
     }
     const playlist = new Playlist({
-      title,
+      title: title.trim(),
       description,
       user: userId,
     });
@@ -74,14 +74,22 @@ exports.addSongToPlaylist = async (req, res) => {
 
     const playlist = await Playlist.findById(playlistId);
     const song = await Song.findById(songId);
+
     if (!playlist || !song) {
       return res.status(404).json({ message: "Playlist or song not found" });
     }
 
-    playlist.songs.push(songId);
-    await playlist.save();
+    // Check if song already in this playlist
+    if (playlist.songs.includes(songId)) {
+      return res
+        .status(400)
+        .json({ message: "Song already exists in the playlist" });
+    } else {
+      playlist.songs.push(songId);
+      await playlist.save();
 
-    res.json(playlist);
+      res.json(playlist);
+    }
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
