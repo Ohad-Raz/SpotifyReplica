@@ -1,24 +1,28 @@
 const express = require("express");
 const router = express.Router();
 const playlistController = require("../controllers/playlist.controller");
-const { auth, authorize } = require("../middlewares/auth");
+const { auth } = require("../middlewares/auth");
 
-router.post("/", auth, playlistController.createPlaylist);
-router.get("/", playlistController.getAllPlaylists);
-router.get("/:id", auth, playlistController.getPlaylistById);
-router.get("/users/:userId", auth, playlistController.getUserPlaylist);
-router.patch("/:id", auth, playlistController.updatePlaylist); // Add this line for updating playlist
+router
+  .route("/")
+  .get(playlistController.getAllPlaylists)
+  .post(auth, playlistController.createPlaylist);
 
-router.post(
-  "/:playlistId/add-song",
-  auth,
-  playlistController.addSongToPlaylist
-);
+router.use(auth);
+
+router
+  .route("/:id")
+  .get(playlistController.getPlaylistById)
+  .patch(playlistController.updatePlaylist)
+  .delete(playlistController.deletePlaylist);
+
+router.get("/users/:userId", playlistController.getUserPlaylist);
+
+router.post("/:playlistId/add-song", playlistController.addSongToPlaylist);
+
 router.delete(
   "/:playlistId/remove-song",
-  auth,
   playlistController.removeSongFromPlaylist
 );
-router.delete("/:id", auth, playlistController.deletePlaylist);
 
 module.exports = router;
