@@ -11,7 +11,7 @@ import GenreCard from "./components/genre/GenreCard.jsx";
 import Register from "./components/Register/Register.jsx";
 
 import Login from "./components/Login/Login.jsx";
-
+import AlbumList from "./components/albumLlist/AlbumList.jsx";
 import NavBar from "./components/navbar/NavBar.jsx";
 import ListSongsArtits from "./components/listSongsArtist/ListSongsArtits.jsx";
 import BottomSignup from "./components/MiniComponents/BottomSignup/BottomSignup.jsx";
@@ -42,6 +42,7 @@ function App() {
           <Route path="/search" element={<SearchAlbums />} />
           <Route path="/genre/:id/:name" element={<GenreCard />} />
 
+          <Route path="/genre/:id/:name/album/:id" element={<AlbumList />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/likes" element={<LikesList />} />

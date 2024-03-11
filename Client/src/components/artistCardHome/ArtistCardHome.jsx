@@ -7,7 +7,7 @@ export default function ArtistCardHome({ artist }) {
     <div className="cardArtistHome">
       <img src={artist.imageUrl} alt="Artist" />
       <p>{artist.name}</p>
-      <FaCirclePlay className="playIcon" />
+      <FaCirclePlay className="playIconArtist" />
     </div>
   );
 }

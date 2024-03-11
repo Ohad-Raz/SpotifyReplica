@@ -36,7 +36,7 @@ export default function Home() {
               <div className="cardArtistHome">
                 <img src={imgLike} alt="Favorites" />
                 <p>Liked Songs</p>
-                <FaCirclePlay className="playIcon" />
+                <FaCirclePlay className="playIconArtist" />
               </div>
             </NavLink>
             {artists?.map((artist) => {

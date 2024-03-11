@@ -1,5 +1,7 @@
 .container {
-  background-color: #191414;
+  background-color: #131313;
+
+  border-radius: 0.5rem;
   color: aliceblue;
   overflow-y: scroll;
   display: grid;

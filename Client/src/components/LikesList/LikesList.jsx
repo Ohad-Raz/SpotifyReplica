@@ -47,9 +47,7 @@ export default function LikesList() {
         const res = await axios.get(`${apiUrl}likes/${logedUser?._id}`);
         const data = await res.data;
         console.log(data.data);
-
         setLikesSongs(data.data);
-
         const imageALbumsSongs = data.data.map(async (song) => {
           const resAlbum = await axios.get(
             `${apiUrl}songs/${song.song_id._id}`
@@ -57,7 +55,6 @@ export default function LikesList() {
           const dataAlbum = await resAlbum.data;
           return dataAlbum.imageUrl;
         });
-
         Promise.all(imageALbumsSongs).then((albumImages) => {
           setAlbumImg([...albumImg, albumImages]);
         });
@@ -65,9 +62,9 @@ export default function LikesList() {
         console.error("Error fetching liked songs:", error);
       }
     };
-
+    console.log(logedUser);
     fetchSongsCurrentUser();
-  }, [logedUser?._id]);
+  }, []);
 
   return (
     <div className="containerListArtist">
