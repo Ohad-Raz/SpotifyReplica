@@ -9,7 +9,9 @@ router.post("/login", userController.login);
 
 router.use(auth);
 
-router.route("/").get(userController.getUsers);
+router
+  .route("/")
+  .get(userController.restrictTo("admin"), userController.getUsers);
 
 router
   .route("/:id")

@@ -179,6 +179,24 @@ const searchUserByName = async (req, res) => {
   }
 };
 
+const restrictTo = (...roles) => {
+  return (req, res, next) => {
+    const userRole = req.user.role;
+
+    if (!roles.includes(userRole)) {
+      return res.status(403).json({
+        status: "error",
+        message:
+          "Access forbidden: You do not have permission to perform this action.",
+        requiredRoles: roles,
+        userRole: userRole,
+      });
+    }
+
+    next();
+  };
+};
+
 module.exports = {
   searchUserByName,
   register,
@@ -189,4 +207,5 @@ module.exports = {
   getUserById,
   uploadPicture,
   getUserByToken,
+  restrictTo,
 };
