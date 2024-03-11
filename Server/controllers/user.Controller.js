@@ -2,35 +2,37 @@ const { User } = require("../models/user.model");
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const { genrateToken } = require("../utils/jwt");
+const { generateToken } = require("../utils/jwt");
 const { uploadToCloudinary } = require("../cloudiniryFloder/cloudinary");
 
 const register = async (req, res) => {
-  const body = await req.body;
-  const hash = await bcryptjs.hash(body.password, 10);
   try {
-    const user = new User({
-      name: body.name,
-      password: hash,
-      email: body.email,
-    });
-    const userDuplicateEmail = await User.findOne({ email: body.email });
-    const token = genrateToken({
+    const { name, email, password } = req.body;
+    const hash = await bcryptjs.hash(password, 10);
+
+    const userDuplicateEmail = await User.findOne({ email });
+    if (userDuplicateEmail) {
+      return res
+        .status(400)
+        .json({ status: "error", error: "Email is already registered" });
+    }
+
+    const user = new User({ name, email, password: hash });
+    await user.save();
+
+    const token = generateToken({
       id: user._id,
       email: user.email,
       role: user.role,
     });
 
-    if (userDuplicateEmail) {
-      return res.send("already has account");
-    } else {
-      user.save();
-
-      return res.send({ user, token });
-    }
+    return res
+      .status(201)
+      .json({ message: "User registered successfully", user, token });
   } catch (error) {
-    console.log(error);
-    res.send("something wrong");
+    return res
+      .status(500)
+      .json({ error: "Internal server error. Please try again later." });
   }
 };
 

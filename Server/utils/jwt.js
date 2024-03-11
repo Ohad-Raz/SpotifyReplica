@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const jwtSecret = "123@123";
 
-const genrateToken = (payload) => {
+const generateToken = (payload) => {
   const token = jwt.sign(payload, jwtSecret, { expiresIn: "24h" });
   return token;
 };
@@ -12,4 +12,4 @@ const verifyToken = (token) => {
   return payload;
 };
 
-module.exports = { genrateToken, verifyToken };
+module.exports = { generateToken, verifyToken };

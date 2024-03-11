@@ -4,8 +4,8 @@ const userController = require("../controllers/user.Controller");
 const { auth } = require("../middlewares/auth");
 const upload = require("../middlewares/upload");
 
-router.post("/register", userController.register);
 router.post("/login", userController.login);
+router.post("/register", userController.register);
 
 router.use(auth);
 
