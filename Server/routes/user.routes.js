@@ -1,49 +1,40 @@
-const { User } = require("../models/user.model");
 const express = require("express");
 const router = express.Router();
-const {
-  register,
-  login,
-  getUsers,
-  getUserById,
-  editUser,
-  deleteUser,
-  uploadPicture,
-  getUserByToken,
-  searchUserByName,
-} = require("../controllers/user.Controller");
+const userController = require("../controllers/user.Controller");
 const { auth } = require("../middlewares/auth");
 const upload = require("../middlewares/upload");
 
-router.post("/register", register);
+router.post("/register", userController.register);
+router.post("/login", userController.login);
 
-router.post("/login", login);
+router.use(auth);
 
-router.get("/", getUsers);
+router.route("/").get(userController.getUsers);
 
-router.patch("/:id", editUser);
+router
+  .route("/:id")
+  .patch(userController.editUser)
+  .delete(userController.deleteUser)
+  .get(userController.getUserById);
 
-router.delete("/:id", deleteUser);
+router.get("/search/:name", userController.searchUserByName);
 
-router.get("/search/:name", searchUserByName);
+router.get("/user", userController.getUserByToken);
 
-router.get("/user", getUserByToken);
-
-router.get("/init-user", auth, async (req, res) => {
-  const user = req.user;
-  console.log(user);
-
+router.get("/init-user", async (req, res) => {
   try {
-    const dbUser = await User.findById(user.id);
+    const dbUser = await req.user;
     return res.send(dbUser);
   } catch (error) {
-    console.log(error);
-    res.send("something wrong");
+    console.error(error);
+    res.status(500).send("Internal Server Error");
   }
 });
 
-router.get("/:id", getUserById);
-
-router.post("/image/:id", upload.single("postImage"), uploadPicture);
+router.post(
+  "/image/:id",
+  upload.single("postImage"),
+  userController.uploadPicture
+);
 
 module.exports = router;
