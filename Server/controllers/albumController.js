@@ -26,13 +26,9 @@ const getSingleAlbum = async (req, res) => {
 };
 
 const addNewAlbum = async (req, res) => {
-  //! FISTUK: it is not recommended to put direct body from
-  //! req as potential undesired data might be uploaded,
-  //!  we have to define the exact field to recive from the body.
-  const body = req.body;
-
+  const { title, release_date, genre, artist_id } = req.body;
   try {
-    const newAlbum = new Album(body);
+    const newAlbum = new Album({ title, release_date, genre, artist_id });
     await newAlbum.save();
 
     await Artist.findByIdAndUpdate(
