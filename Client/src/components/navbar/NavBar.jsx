@@ -2,10 +2,18 @@ import React from "react";
 import { MdOutlineDownloadForOffline } from "react-icons/md";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styles from "../../App.module.css";
 
 export default function NavBar({ setIsOnAuth, logedUser }) {
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate(-1);
+  };
+  const handleForward = () => {
+    navigate(1);
+  };
   return (
     <header className={styles.header}>
       {logedUser ? (
@@ -40,10 +48,10 @@ export default function NavBar({ setIsOnAuth, logedUser }) {
         </>
       )}
       <div className={styles.switch}>
-        <div>
+        <div onClick={handleBack}>
           <IoIosArrowBack />
         </div>
-        <div>
+        <div onClick={handleForward}>
           <IoIosArrowForward />
         </div>
       </div>
