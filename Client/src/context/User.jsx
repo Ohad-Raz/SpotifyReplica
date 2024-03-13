@@ -23,9 +23,12 @@ export default function UserProvider({ children }) {
             },
           });
 
-          // console.log(res.data);
-          if (res.data.status === "success") {
-            setLogedUser(res.data.data.user); // Set the user obtained from token validation
+          const data = await res.data;
+
+          console.log(data);
+          if (data.status === "success") {
+            // console.log(res.data.data.user);
+            setLogedUser(data); // Set the user obtained from token validation
           } else {
             // Token is invalid or expired, clear localStorage and set logged user to null
             localStorage.removeItem("token");
@@ -64,7 +67,14 @@ export default function UserProvider({ children }) {
 
   return (
     <UserContext.Provider
-      value={{ handleChange, handleSubmit, logedUser, setLogedUser, setToken, token }}
+      value={{
+        handleChange,
+        handleSubmit,
+        logedUser,
+        setLogedUser,
+        setToken,
+        token,
+      }}
     >
       {children}
     </UserContext.Provider>

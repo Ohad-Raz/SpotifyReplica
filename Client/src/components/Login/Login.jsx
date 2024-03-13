@@ -42,19 +42,19 @@ function Login() {
         password: user.password,
       });
 
-      console.log(res.data);
+      const data = await res.data;
+      console.log(data);
 
-      // setUser(res.data.userFound);
+      setUser(data.userFound);
 
-      localStorage.setItem('token', res.data.token);
-      setLogedUser(res.data.user);
-      console.log("Logged in successfully:", res.data.user);
+      localStorage.setItem("token", data.token);
+      setLogedUser(data.user);
+      console.log("Logged in successfully:", data.user);
       // window.location.href = "/";
     } catch (error) {
       console.error("Failed to login:", error);
     }
   };
-
 
   return (
     <div className={styles.loginPage}>

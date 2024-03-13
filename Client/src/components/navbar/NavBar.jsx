@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { MdOutlineDownloadForOffline } from "react-icons/md";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
@@ -14,6 +14,9 @@ export default function NavBar({ setIsOnAuth, logedUser }) {
   const handleForward = () => {
     navigate(1);
   };
+  useEffect(() => {
+    console.log(logedUser);
+  }, []);
   return (
     <header className={styles.header}>
       {logedUser ? (
