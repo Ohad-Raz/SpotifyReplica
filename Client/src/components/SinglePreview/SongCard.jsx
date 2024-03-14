@@ -17,9 +17,9 @@ const SongCard = () => {
     try {
       const res = await axios.get(`${apiUrl}songs`);
       const data = res.data;
-      console.log(data);
+      // console.log(data);
 
-      setSongs(data.slice(11, 22));
+      setSongs(data.slice(11, 20));
     } catch (error) {
       console.error("Fetching songs failed: ", error);
     }
@@ -28,7 +28,6 @@ const SongCard = () => {
     fetchSongs();
   }, []);
 
-  // console.log(songs[2]);
   return (
     <div className={styles.mediaContainer}>
       {songs.map((song) => (

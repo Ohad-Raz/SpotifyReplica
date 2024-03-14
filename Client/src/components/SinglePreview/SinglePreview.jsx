@@ -6,7 +6,7 @@ import PlaylistCard from "./PlaylistCard";
 import styles from "./SinglePreview.module.css";
 import { NavLink } from "react-router-dom";
 
-const SinglePreview = ({ albums }) => {
+const SinglePreview = () => {
   return (
     <div className={styles.cardsContainer}>
       

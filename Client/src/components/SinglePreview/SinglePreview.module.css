@@ -2,7 +2,8 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  /* justify-content: flex-start; */
+  justify-content: center;
+  width: 65rem;
 }
 
 .mediaCard {

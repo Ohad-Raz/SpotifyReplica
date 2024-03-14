@@ -8,7 +8,7 @@ router
   .get(playlistController.getAllPlaylists)
   .post(auth, playlistController.createPlaylist);
 
-router.use(auth);
+// router.use(auth);    need to check, when goin to dynamic route with this in use i cant fetch playists
 
 router
   .route("/:id")

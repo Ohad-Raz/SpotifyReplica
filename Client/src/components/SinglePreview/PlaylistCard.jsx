@@ -4,12 +4,18 @@ import { AudioContext } from "../../context/AudioContext";
 
 import { apiUrl } from "../../config/apiConfig";
 import { FaCirclePlay } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
+
 
 const PlaylistCard = () => {
+  const navigate = useNavigate();
   const [playlists, setPlaylists] = useState([]);
   const { setCurrentPlaylist } = useContext(AudioContext);
 
-  const setPlaylist = (playlist) => setCurrentPlaylist(playlist.songs);
+  const setPlaylist = (playlist) =>   {
+    setCurrentPlaylist(playlist.songs);
+  navigate(`/listMusicPlaylist/${playlist._id}`); // Assuming '/listMusicplaylist/:id' is the route for displaying songs of an playlist
+  }
   useEffect(() => {
     const fetchPlaylists = async () => {
       try {

@@ -1,9 +1,10 @@
 .mediaContainer {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   flex-direction: row;
   justify-content: center;
   gap: 1.5rem;
+  
 }
 
 .mediaCard {
@@ -18,11 +19,13 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   transition: background-color 0.5s;
   justify-content: center;
+  
 }
 
 .mediaCard:hover {
   /* transform: scale(1.00); */
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
 
 .mediaImageContainer {

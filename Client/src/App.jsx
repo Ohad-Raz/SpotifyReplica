@@ -16,6 +16,7 @@ import NavBar from "./components/navbar/NavBar.jsx";
 import ListSongsArtits from "./components/listSongsArtist/ListSongsArtits.jsx";
 import BottomSignup from "./components/MiniComponents/BottomSignup/BottomSignup.jsx";
 import LikesList from "./components/LikesList/LikesList.jsx";
+import PlaylistList from "./components/playlistList/PlaylistList";
 
 function App() {
   const { logedUser } = useContext(UserContext);
@@ -42,6 +43,8 @@ function App() {
           <Route path="/search" element={<SearchAlbums />} />
           <Route path="/genre/:id/:name" element={<GenreCard />} />
           <Route path="/listMusicAlbum/:id" element={<AlbumList />} />
+          <Route path="/listMusicPlaylist/:id" element={<PlaylistList />} />
+
           <Route path="/genre/:id/:name/album/:id" element={<AlbumList />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

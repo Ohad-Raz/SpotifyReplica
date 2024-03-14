@@ -35,6 +35,8 @@
 .artistCard:hover .playIcon {
   display: flex;
   width: 100%;
+  cursor: pointer;
+
 }
 .playIcon:hover {
   font-size: 4vw;
