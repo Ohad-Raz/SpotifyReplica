@@ -50,7 +50,7 @@ function Login() {
       localStorage.setItem("token", data.token);
       setLogedUser(data.user);
       console.log("Logged in successfully:", data.user);
-      // window.location.href = "/";
+      window.location.href = "/";
     } catch (error) {
       console.error("Failed to login:", error);
     }

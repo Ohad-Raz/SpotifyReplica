@@ -7,6 +7,6 @@ const { MONGO_URL } = process.env;
 const config = {
   MONGO_URL,
 };
-console.log(config);
+// console.log(config);
 
 module.exports = { config };
