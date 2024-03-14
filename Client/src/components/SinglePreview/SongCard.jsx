@@ -3,6 +3,7 @@ import styles from "./MediaCard.module.css";
 import { apiUrl } from "../../config/apiConfig";
 import { FaCirclePlay } from "react-icons/fa6";
 import { AudioContext } from "../../context/AudioContext";
+import axios from "axios";
 
 const SongCard = () => {
   const { setCurrentPlaylist, setCurrentAudio } = useContext(AudioContext);
@@ -12,20 +13,18 @@ const SongCard = () => {
     setCurrentAudio(song);
     setCurrentPlaylist(songs);
   };
-  useEffect(() => {
-    const fetchSongs = async () => {
-      try {
-        const response = await fetch(`${apiUrl}songs`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        setSongs(data.data.songs.slice(0, 9));
-      } catch (error) {
-        console.error("Fetching songs failed: ", error);
-      }
-    };
+  const fetchSongs = async () => {
+    try {
+      const res = await axios.get(`${apiUrl}songs`);
+      const data = res.data;
+      console.log(data);
 
+      setSongs(data.slice(11, 22));
+    } catch (error) {
+      console.error("Fetching songs failed: ", error);
+    }
+  };
+  useEffect(() => {
     fetchSongs();
   }, []);
 

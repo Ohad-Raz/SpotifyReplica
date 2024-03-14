@@ -4,14 +4,16 @@ import AlbumCard from "./AlbumCard";
 import SongCard from "./SongCard";
 import PlaylistCard from "./PlaylistCard";
 import styles from "./SinglePreview.module.css";
+import { NavLink } from "react-router-dom";
 
-const SinglePreview = () => {
+const SinglePreview = ({ albums }) => {
   return (
     <div className={styles.cardsContainer}>
+      
       <div className={styles.Card}>
         <h2>Albums</h2>
         <div className={styles.mediaCard}>
-          <AlbumCard />
+        <AlbumCard/>
         </div>
       </div>
 

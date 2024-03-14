@@ -1,16 +1,20 @@
 import { useState, useEffect, useContext } from "react";
 import styles from "./MediaCard.module.css";
 import { AudioContext } from "../../context/AudioContext";
-
-import { apiUrl } from "../../config/apiConfig";
 import { FaCirclePlay } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
+import { apiUrl } from "../../config/apiConfig";
 
 const AlbumCard = () => {
+  const navigate = useNavigate();
   const { setCurrentPlaylist } = useContext(AudioContext);
-
   const [albums, setAlbums] = useState([]);
 
-  const setPlaylist = (playlist) => setCurrentPlaylist(playlist.songs);
+  const setPlaylist = (album) => {
+    setCurrentPlaylist(album.songs);
+    navigate(`/listMusicAlbum/${album._id}`); // Assuming '/listMusicAlbum/:id' is the route for displaying songs of an album
+  };
+
   useEffect(() => {
     const fetchAlbums = async () => {
       try {
@@ -31,6 +35,7 @@ const AlbumCard = () => {
   return (
     <div className={styles.mediaContainer}>
       {albums.map((album) => (
+        
         <div
           key={album._id}
           className={styles.mediaCard}

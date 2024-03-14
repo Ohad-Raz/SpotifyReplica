@@ -32,15 +32,18 @@ const createSong = async (req, res) => {
 
 const getAllSongs = async (req, res) => {
   try {
-    const songs = await Song.find({}).populate("album");
-    res.status(200).json({
-      status: "success",
-      data: {
-        songs,
-      },
-    });
+    const songs = await Song.find({});
+    console.log(songs);
+
+    return res.send(songs);
+    // return res.status(200).json({
+    //   status: "success",
+    //   data: {
+    //     songs,
+    //   },
+    // });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(404).json({ error: error.message });
   }
 };
 

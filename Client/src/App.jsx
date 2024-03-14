@@ -41,7 +41,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchAlbums />} />
           <Route path="/genre/:id/:name" element={<GenreCard />} />
-
+          <Route path="/listMusicAlbum/:id" element={<AlbumList />} />
           <Route path="/genre/:id/:name/album/:id" element={<AlbumList />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
