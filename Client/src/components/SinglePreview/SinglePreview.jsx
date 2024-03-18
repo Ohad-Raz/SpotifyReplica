@@ -10,28 +10,28 @@ const SinglePreview = () => {
   return (
     <div className={styles.cardsContainer}>
       
-      <div className={styles.Card}>
+      <div className={styles.card}>
         <h2>Albums</h2>
         <div className={styles.mediaCard}>
         <AlbumCard/>
         </div>
       </div>
 
-      <div className={styles.Card}>
+      <div className={styles.card}>
         <h2>Artists</h2>
         <div className={styles.mediaCard}>
           <ArtistCard />
         </div>
       </div>
 
-      <div className={styles.Card}>
+      <div className={styles.card}>
         <h2>Playlists</h2>
 
         <PlaylistCard className={styles.mediaCard} />
       </div>
 
-      <div className={styles.Card}>
-        <h2>Songs</h2>
+      <div className={styles.card}>
+        <h2 className={styles.songHeader}>Songs</h2>
 
         <SongCard className={styles.mediaCard} />
       </div>

@@ -7,6 +7,8 @@ const playlistSchema = new Schema({
     required: true,
     unique: true,
   },
+  imageUrl: { type: "String" },
+
   description: String,
   user: {
     type: Schema.Types.ObjectId,

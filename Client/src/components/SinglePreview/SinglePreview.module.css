@@ -6,6 +6,11 @@
   width: 65rem;
 }
 
+/* .card{
+display: flex;
+} */
+
+
 .mediaCard {
   display: flex;
   flex-direction: column;
@@ -52,7 +57,9 @@
   color: #b3b3b3;
 }
 
-
+.songHeader{
+  /* font-size: 4rem; */
+}
 
 
 /* containers */
