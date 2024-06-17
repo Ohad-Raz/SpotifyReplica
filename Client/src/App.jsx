@@ -21,6 +21,7 @@ import PlaylistList from "./components/playlistList/PlaylistList";
 function App() {
   const { logedUser } = useContext(UserContext);
   const [isOnAuth, setIsOnAuth] = useState(false);
+  
 
   // console.log(logedUser);
 
